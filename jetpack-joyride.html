@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jetpack Joyride (game clone) - Timi Folayan</title>
-<meta name="description" content="Jetpack Joyride (game clone) - a project by Timi Folayan.">
+<title>Two-Player Jetpack Joyride - Timi Folayan</title>
+<meta name="description" content="Two-Player Jetpack Joyride - a project by Timi Folayan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,16 +34,20 @@
 
   <section class="detail-section" id="top">
     <a href="index.html#projects" class="mono back-link">← back to projects</a>
-    <h1 class="detail-title">Jetpack Joyride (game clone)</h1>
-    <p class="mono card-eyebrow detail-eyebrow">JAVA · ECLIPSE IDE</p>
+    <h1 class="detail-title">Two-Player Jetpack Joyride</h1>
+    <p class="mono card-eyebrow detail-eyebrow">PYTHON · PYGAME · NI</p>
     <div class="about-text">
-      <p>Led a team building a Jetpack Joyride-inspired game, directing concept, design specs, and feature development including jetpack flight, barrier collision detection, and missile behavior.</p>
-      <p>Architected the game's class structure with a UML diagram built on Object-Oriented Design principles before writing code.</p>
+      <p>A two-player split-screen endless flyer in pygame. Holding a button fires a jetpack; letting go drops you. Two players share one screen, one lane each, and race the same obstacle course until both crash - whoever flies furthest wins.</p>
+      <p>Physical buttons are wired into an NI mioDAQ via nidaqmx. A background thread polls the DAQ so driver reads never stall the 60fps game loop; LEDs mirror each player's button. When no hardware is present it falls back to the keyboard automatically, which is how it was developed. During a hardware round the keyboard is ignored so a bystander can't steal control.</p>
+      <p>Self-initiated during my Emerson/NI internship, not an assigned project, and built with Cursor and Claude Code. Both lanes share a seed from a vetted pool so the courses are identical and skill is the only variable.</p>
+    </div>
+    <div class="card-links">
+      <a href="https://github.com/rhit-folayaod/MioDAQ-Powered-Jetpack-Joyride" class="mono" target="_blank" rel="noopener">view repo →</a>
     </div>
     <div class="skills-grid detail-stack">
       <div class="skill-group">
         <p class="mono skill-label">tech stack</p>
-        <p>Java · Eclipse IDE · UML / OOD design · Collision detection · Game architecture</p>
+        <p>Python · pygame · nidaqmx · NI mioDAQ</p>
       </div>
     </div>
   </section>
