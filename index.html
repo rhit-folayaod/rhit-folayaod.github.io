@@ -157,21 +157,10 @@
     <h2 class="section-head"><span class="mono tag">04</span> Projects</h2>
     <div class="card-grid">
 
-      <article class="card">
+      <article class="card card-live">
         <div class="card-corner tl"></div><div class="card-corner tr"></div>
         <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">HARDWARE · NI</p>
-        <h3>MioDAQ - Tech Expo</h3>
-        <p>Presented Emerson's MioDAQ data-acquisition hardware at an internal Tech Expo, closing the gap between my software background and measurement-systems fundamentals well enough to explain it to a room of engineers.</p>
-        <div class="card-links">
-          <a href="miodaq.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">PYTHON · MCP · NI</p>
+        <p class="mono card-eyebrow"><span class="dot dot-live"></span>PYTHON · MCP · NI</p>
         <h3>DAQ MCP Server</h3>
         <p>An MCP server that lets AI coding clients like Cursor reach past the editor and into physical NI DAQ hardware - discover, read, and write channels through structured tools instead of ad-hoc scripts. Writes are off by default, with channel allowlists, direction enforcement, analog output clamping, and write read-back verification. The same tool surface runs fully simulated with no NI hardware, or against a real NI-DAQmx driver, and streams live acquisition to a Starlette/SSE dashboard.</p>
         <div class="card-links">
@@ -191,10 +180,10 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card card-live">
         <div class="card-corner tl"></div><div class="card-corner tr"></div>
         <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">PYTHON · FASTAPI · LATEX</p>
+        <p class="mono card-eyebrow"><span class="dot dot-live"></span>PYTHON · FASTAPI · LATEX</p>
         <h3>Resume Tailor</h3>
         <p>A web app and CLI that ranks pre-written resume bullets against a job posting and compiles a tailored PDF with LaTeX. The pipeline cannot fabricate resume content - an optional LLM rerank can only reorder existing bullet IDs, never generate new bullet text. FastAPI plus Supabase Auth/Postgres, with OpenAI used for structured job-post extraction, deployed on Fly.io.</p>
         <div class="card-links">
@@ -204,10 +193,10 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card card-live">
         <div class="card-corner tl"></div><div class="card-corner tr"></div>
         <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">TYPESCRIPT · REACT · VITE</p>
+        <p class="mono card-eyebrow"><span class="dot dot-live"></span>TYPESCRIPT · REACT · VITE</p>
         <h3>LinkedLife</h3>
         <p>A satirical LinkedIn life-sim in the browser: cold-message strangers, hold conversations, sit interviews, and climb a career ladder. A local classifier drives all game logic and consequences; an LLM is only ever used to write flavor text, so the game is fully playable and deterministic with zero API calls. Headless bot playthroughs validate game balance across thousands of simulated turns.</p>
         <div class="card-links">
@@ -219,22 +208,12 @@
       <article class="card">
         <div class="card-corner tl"></div><div class="card-corner tr"></div>
         <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">JAVA · MAVEN</p>
-        <h3>Settlers of Catan</h3>
-        <p>A multi-package Java implementation of Catan. Untangled classpath issues and internationalization resource-bundle loading across a fresh build environment - the kind of bug that only shows up when the project structure gets real.</p>
+        <p class="mono card-eyebrow">PYTHON · PYGAME · NI</p>
+        <h3>Two-Player Jetpack Joyride</h3>
+        <p>A two-player split-screen endless flyer in pygame, played on physical buttons wired into an NI mioDAQ, with keyboard fallback so it runs without hardware. Self-initiated during my Emerson/NI internship - the point was driving a real game loop off live digital I/O rather than a plot window. Both players race the same seeded course while a background thread keeps DAQ reads off the 60fps render path.</p>
         <div class="card-links">
-          <a href="settlers-of-catan.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">SQL · JAVA · SQL SERVER</p>
-        <h3>Lost and Found Database</h3>
-        <p>A full database system for a lost and found application on Microsoft SQL Server, cutting item retrieval time by 40%. Built a Java UI for admins and users on top of it, applying object-oriented design and Java-SQL connectivity for a maintainable, scalable system.</p>
-        <div class="card-links">
-          <a href="lost-and-found.html" class="mono">view project →</a>
+          <a href="jetpack-joyride.html" class="mono">view project →</a>
+          <a href="https://github.com/rhit-folayaod/MioDAQ-Powered-Jetpack-Joyride" class="mono" target="_blank" rel="noopener">view repo →</a>
         </div>
       </article>
 
@@ -263,6 +242,28 @@
       <article class="card">
         <div class="card-corner tl"></div><div class="card-corner tr"></div>
         <div class="card-corner bl"></div><div class="card-corner br"></div>
+        <p class="mono card-eyebrow">SQL · JAVA · SQL SERVER</p>
+        <h3>Lost and Found Database</h3>
+        <p>A full database system for a lost and found application on Microsoft SQL Server, cutting item retrieval time by 40%. Built a Java UI for admins and users on top of it, applying object-oriented design and Java-SQL connectivity for a maintainable, scalable system.</p>
+        <div class="card-links">
+          <a href="lost-and-found.html" class="mono">view project →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-corner tl"></div><div class="card-corner tr"></div>
+        <div class="card-corner bl"></div><div class="card-corner br"></div>
+        <p class="mono card-eyebrow">JAVA · MAVEN</p>
+        <h3>Settlers of Catan</h3>
+        <p>A multi-package Java implementation of Catan. Untangled classpath issues and internationalization resource-bundle loading across a fresh build environment - the kind of bug that only shows up when the project structure gets real.</p>
+        <div class="card-links">
+          <a href="settlers-of-catan.html" class="mono">view project →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-corner tl"></div><div class="card-corner tr"></div>
+        <div class="card-corner bl"></div><div class="card-corner br"></div>
         <p class="mono card-eyebrow">HTML · CSS · JAVASCRIPT</p>
         <h3>Online Sports Webstore</h3>
         <p>An online web store built from scratch with a responsive HTML/CSS/JavaScript interface, driving a 50% increase in user engagement. Implemented CRUD operations for dynamic product management and order processing, cutting order errors by 25%. Pair-programmed with a teammate to integrate real-time product and order-tracking features.</p>
@@ -274,12 +275,11 @@
       <article class="card">
         <div class="card-corner tl"></div><div class="card-corner tr"></div>
         <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">PYTHON · PYGAME · NI</p>
-        <h3>Two-Player Jetpack Joyride</h3>
-        <p>A two-player split-screen endless flyer in pygame, played on physical buttons wired into an NI mioDAQ, with keyboard fallback so it runs without hardware. Self-initiated during my Emerson/NI internship - the point was driving a real game loop off live digital I/O rather than a plot window. Both players race the same seeded course while a background thread keeps DAQ reads off the 60fps render path.</p>
+        <p class="mono card-eyebrow">HARDWARE · NI</p>
+        <h3>MioDAQ - Tech Expo</h3>
+        <p>Presented Emerson's MioDAQ data-acquisition hardware at an internal Tech Expo, closing the gap between my software background and measurement-systems fundamentals well enough to explain it to a room of engineers.</p>
         <div class="card-links">
-          <a href="jetpack-joyride.html" class="mono">view project →</a>
-          <a href="https://github.com/rhit-folayaod/MioDAQ-Powered-Jetpack-Joyride" class="mono" target="_blank" rel="noopener">view repo →</a>
+          <a href="miodaq.html" class="mono">view project →</a>
         </div>
       </article>
 
@@ -292,23 +292,23 @@
     <div class="skills-grid">
       <div class="skill-group">
         <p class="mono skill-label">languages</p>
-        <p>Java · C# · C · C++ · Python · JavaScript · SQL · Verilog · HTML/CSS</p>
+        <p>Python · Java · TypeScript · JavaScript · C# · C · C++ · SQL · HTML/CSS · Verilog</p>
       </div>
       <div class="skill-group">
         <p class="mono skill-label">tools & platforms</p>
-        <p>Git · VS Code · IntelliJ · Eclipse IDE · Firebase · React · Mathematica</p>
+        <p>Git · Docker · React · Vite · Fly.io · Vercel · VS Code · IntelliJ · Eclipse IDE · Firebase · Mathematica</p>
       </div>
       <div class="skill-group">
         <p class="mono skill-label">backend & mlops</p>
-        <p>FastAPI · PostgreSQL · Docker · Kubernetes (GKE) · MLflow · scikit-learn · GitHub Actions (CI/CD)</p>
+        <p>FastAPI · PostgreSQL · Supabase · MCP · Kubernetes (GKE) · MLflow · scikit-learn · GitHub Actions (CI/CD) · OpenAI API</p>
       </div>
       <div class="skill-group">
         <p class="mono skill-label">hardware / lab</p>
-        <p>Quartus · ModelSim · Arduino · MSS · Modbus TCP/IP</p>
+        <p>NI-DAQmx · nidaqmx · Modbus TCP/IP · Arduino · Quartus · ModelSim · MSS</p>
       </div>
       <div class="skill-group">
         <p class="mono skill-label">practice</p>
-        <p>Unit testing · Formal methods & proofs · Data structures & algorithms</p>
+        <p>pytest · Vitest · Unit testing · Formal methods & proofs · Data structures & algorithms</p>
       </div>
     </div>
   </section>
