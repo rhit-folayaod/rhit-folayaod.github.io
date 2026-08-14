@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedLife - Timi Folayan</title>
+<meta name="description" content="LinkedLife - a project by Timi Folayan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- decorative circuit-grid background -->
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<!-- side nav / instrument panel -->
+<nav class="panel" aria-label="Section navigation">
+  <a href="index.html" class="panel-brand"><span class="dot dot-live"></span>gloryboy.</a>
+  <ul class="panel-list">
+    <li><a href="index.html#about" data-section="about"><span class="led"></span><span class="panel-label">about</span></a></li>
+    <li><a href="index.html#education" data-section="education"><span class="led"></span><span class="panel-label">education</span></a></li>
+    <li><a href="index.html#experience" data-section="experience"><span class="led"></span><span class="panel-label">experience</span></a></li>
+    <li><a href="index.html#projects" data-section="projects"><span class="led"></span><span class="panel-label">projects</span></a></li>
+    <li><a href="index.html#skills" data-section="skills"><span class="led"></span><span class="panel-label">skills</span></a></li>
+    <li><a href="index.html#leadership" data-section="leadership"><span class="led"></span><span class="panel-label">leadership</span></a></li>
+    <li><a href="index.html#contact" data-section="contact"><span class="led"></span><span class="panel-label">contact</span></a></li>
+  </ul>
+  <a class="panel-resume" href="Resume.pdf" target="_blank" rel="noopener" download>↓ resume.pdf</a>
+</nav>
+
+<main>
+
+  <section class="detail-section" id="top">
+    <a href="index.html#projects" class="mono back-link">← back to projects</a>
+    <h1 class="detail-title">LinkedLife</h1>
+    <p class="mono card-eyebrow detail-eyebrow">TYPESCRIPT · REACT · VITE</p>
+    <div class="about-text">
+      <p>A satirical LinkedIn life-sim. You cold-message strangers, hold conversations, sit interviews, and climb a career ladder while your network tries to eat you.</p>
+      <p>A local classifier buckets typed messages into a tone, and that bucket alone determines the stat and relationship consequences. An LLM, if configured, only writes flavor text - never game logic. The game is fully playable and deterministic with zero API calls.</p>
+      <p>The engine is deterministic and seeded, which is what makes headless bot playthroughs possible: a bot drives the real store for thousands of turns and asserts invariants after every action, catching balance regressions that type checking cannot.</p>
+    </div>
+    <div class="card-links">
+      <a href="https://linklife.vercel.app" class="mono" target="_blank" rel="noopener">try it →</a>
+    </div>
+    <div class="skills-grid detail-stack">
+      <div class="skill-group">
+        <p class="mono skill-label">tech stack</p>
+        <p>TypeScript · React · Vite · Zustand · Vitest · Vercel</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer mono">
+  <span id="clock"></span>
+  <span>built with html · css · js - no framework</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
