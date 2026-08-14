@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Tailor - Timi Folayan</title>
+<meta name="description" content="Resume Tailor - a project by Timi Folayan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- decorative circuit-grid background -->
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<!-- side nav / instrument panel -->
+<nav class="panel" aria-label="Section navigation">
+  <a href="index.html" class="panel-brand"><span class="dot dot-live"></span>gloryboy.</a>
+  <ul class="panel-list">
+    <li><a href="index.html#about" data-section="about"><span class="led"></span><span class="panel-label">about</span></a></li>
+    <li><a href="index.html#education" data-section="education"><span class="led"></span><span class="panel-label">education</span></a></li>
+    <li><a href="index.html#experience" data-section="experience"><span class="led"></span><span class="panel-label">experience</span></a></li>
+    <li><a href="index.html#projects" data-section="projects"><span class="led"></span><span class="panel-label">projects</span></a></li>
+    <li><a href="index.html#skills" data-section="skills"><span class="led"></span><span class="panel-label">skills</span></a></li>
+    <li><a href="index.html#leadership" data-section="leadership"><span class="led"></span><span class="panel-label">leadership</span></a></li>
+    <li><a href="index.html#contact" data-section="contact"><span class="led"></span><span class="panel-label">contact</span></a></li>
+  </ul>
+  <a class="panel-resume" href="Resume.pdf" target="_blank" rel="noopener" download>↓ resume.pdf</a>
+</nav>
+
+<main>
+
+  <section class="detail-section" id="top">
+    <a href="index.html#projects" class="mono back-link">← back to projects</a>
+    <h1 class="detail-title">Resume Tailor</h1>
+    <p class="mono card-eyebrow detail-eyebrow">PYTHON · FASTAPI · LATEX</p>
+    <div class="about-text">
+      <p>A web app and CLI that ranks pre-written resume bullets against a job posting and compiles a tailored PDF via LaTeX/Tectonic.</p>
+      <p>The design constraint that matters: it cannot invent resume content. Printed text only comes from a validated store. An optional LLM rerank step can only reorder existing bullet IDs - it never emits new bullet text. Job-post parsing extracts required and preferred skills for scoring, not for printing.</p>
+      <p>The same codebase runs locally against a YAML store or hosted with Supabase Auth and Postgres. FastAPI serves a plain HTML/JS UI; Tectonic compiles the PDF inside Docker on Fly.io.</p>
+    </div>
+    <div class="card-links">
+      <a href="https://github.com/rhit-folayaod/ai-resume-tailor" class="mono" target="_blank" rel="noopener">view repo →</a>
+      <a href="https://ai-resume-tailor.fly.dev" class="mono" target="_blank" rel="noopener">try it →</a>
+    </div>
+    <div class="skills-grid detail-stack">
+      <div class="skill-group">
+        <p class="mono skill-label">tech stack</p>
+        <p>Python · FastAPI · Supabase · OpenAI · Tectonic / LaTeX · Fly.io</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer mono">
+  <span id="clock"></span>
+  <span>built with html · css · js - no framework</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
