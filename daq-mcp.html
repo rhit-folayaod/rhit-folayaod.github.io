@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAQ MCP Server - Timi Folayan</title>
+<meta name="description" content="DAQ MCP Server - a project by Timi Folayan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- decorative circuit-grid background -->
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<!-- side nav / instrument panel -->
+<nav class="panel" aria-label="Section navigation">
+  <a href="index.html" class="panel-brand"><span class="dot dot-live"></span>gloryboy.</a>
+  <ul class="panel-list">
+    <li><a href="index.html#about" data-section="about"><span class="led"></span><span class="panel-label">about</span></a></li>
+    <li><a href="index.html#education" data-section="education"><span class="led"></span><span class="panel-label">education</span></a></li>
+    <li><a href="index.html#experience" data-section="experience"><span class="led"></span><span class="panel-label">experience</span></a></li>
+    <li><a href="index.html#projects" data-section="projects"><span class="led"></span><span class="panel-label">projects</span></a></li>
+    <li><a href="index.html#skills" data-section="skills"><span class="led"></span><span class="panel-label">skills</span></a></li>
+    <li><a href="index.html#leadership" data-section="leadership"><span class="led"></span><span class="panel-label">leadership</span></a></li>
+    <li><a href="index.html#contact" data-section="contact"><span class="led"></span><span class="panel-label">contact</span></a></li>
+  </ul>
+  <a class="panel-resume" href="Resume.pdf" target="_blank" rel="noopener" download>↓ resume.pdf</a>
+</nav>
+
+<main>
+
+  <section class="detail-section" id="top">
+    <a href="index.html#projects" class="mono back-link">← back to projects</a>
+    <h1 class="detail-title">DAQ MCP Server</h1>
+    <p class="mono card-eyebrow detail-eyebrow">PYTHON · MCP · NI</p>
+    <div class="about-text">
+      <p>An MCP (Model Context Protocol) server so AI coding clients - Cursor, cloud agents - can discover, read, and write NI DAQ channels through structured tools rather than one-off scripts. The interesting part is the reach: an editor session can talk to physical test hardware, not just files.</p>
+      <p>Safety is the default. Writes start off, channels have to be allowlisted, input vs output is enforced, analog outputs are clamped, and digital writes are read back to confirm they landed. Agent writes and the browser dashboard share the same gates.</p>
+      <p>A pure-Python simulator means the same tools work on a laptop with no NI drivers. Point it at real hardware and it talks NI-DAQmx. Continuous acquisition feeds a live Starlette/SSE dashboard.</p>
+    </div>
+    <div class="card-links">
+      <a href="https://github.com/rhit-folayaod/daq-mcp" class="mono" target="_blank" rel="noopener">view repo →</a>
+    </div>
+    <div class="skills-grid detail-stack">
+      <div class="skill-group">
+        <p class="mono skill-label">tech stack</p>
+        <p>Python · FastMCP · nidaqmx · Starlette · SSE · pytest</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer mono">
+  <span id="clock"></span>
+  <span>built with html · css · js - no framework</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

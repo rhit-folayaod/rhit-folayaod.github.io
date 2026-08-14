@@ -171,6 +171,18 @@
       <article class="card">
         <div class="card-corner tl"></div><div class="card-corner tr"></div>
         <div class="card-corner bl"></div><div class="card-corner br"></div>
+        <p class="mono card-eyebrow">PYTHON · MCP · NI</p>
+        <h3>DAQ MCP Server</h3>
+        <p>An MCP server that lets AI coding clients like Cursor reach past the editor and into physical NI DAQ hardware - discover, read, and write channels through structured tools instead of ad-hoc scripts. Writes are off by default, with channel allowlists, direction enforcement, analog output clamping, and write read-back verification. The same tool surface runs fully simulated with no NI hardware, or against a real NI-DAQmx driver, and streams live acquisition to a Starlette/SSE dashboard.</p>
+        <div class="card-links">
+          <a href="daq-mcp.html" class="mono">view project →</a>
+          <a href="https://github.com/rhit-folayaod/daq-mcp" class="mono" target="_blank" rel="noopener">view repo →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-corner tl"></div><div class="card-corner tr"></div>
+        <div class="card-corner bl"></div><div class="card-corner br"></div>
         <p class="mono card-eyebrow">PYTHON · FASTAPI · ML · K8S</p>
         <h3>NBA Player Predictor</h3>
         <p>A backend web application predicting an NBA player's next-game point total against a specific opponent, built as a full production ML system rather than just a notebook. Trained a RandomForestRegressor on real player and team data from PostgreSQL, engineering matchup-aware features like scoring averages and opponent points allowed, then tracked 10 experiment runs in MLflow and promoted the best one to the Model Registry. The trained model runs as its own containerized service, deployed through a GitHub Actions CI/CD pipeline that auto-ships to a GKE QA cluster and gates production behind manual approval.</p>
