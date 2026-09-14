@@ -38,7 +38,7 @@
     <p class="mono card-eyebrow detail-eyebrow"><span class="dot dot-live"></span>PYTHON · MCP · NI</p>
     <div class="about-text">
       <p>An MCP (Model Context Protocol) server so AI coding clients - Cursor, cloud agents - can discover, read, and write NI DAQ channels through structured tools rather than one-off scripts. The interesting part is the reach: an editor session can talk to physical test hardware, not just files.</p>
-      <p>Safety is the default. Writes start off, channels have to be allowlisted, input vs output is enforced, analog outputs are clamped, and digital writes are read back to confirm they landed. Agent writes and the browser dashboard share the same gates.</p>
+      <p>A 5-layer safety model: writes start off, channels have to be allowlisted, input vs output is enforced, analog outputs are clamped, and digital writes are read back to confirm they landed. Agent tools and the browser dashboard share the same gates.</p>
       <p>A pure-Python simulator means the same tools work on a laptop with no NI drivers. Point it at real hardware and it talks NI-DAQmx. Continuous acquisition feeds a live Starlette/SSE dashboard.</p>
     </div>
     <div class="card-links">

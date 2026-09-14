@@ -37,7 +37,7 @@
     <p class="mono eyebrow"><span class="prompt">timi@portfolio:~$</span> <span id="typed"></span><span class="cursor">▌</span></p>
     <h1 class="hero-title">Timi <span class="hero-lastname">Folayan</span></h1>
     <p class="hero-sub">Software Engineer with a measurement-systems streak - I write code, but I've also spent a summer explaining data acquisition hardware to people who need to trust it.</p>
-    <p class="hero-role mono">Software Engineering @ Rose-Hulman '27 &nbsp;·&nbsp; SDE Intern @ Emerson (NI), Austin TX</p>
+    <p class="hero-role mono">Software Engineering @ Rose-Hulman '27 &nbsp;·&nbsp; Former SDE Intern @ Emerson (NI), Austin TX</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View projects</a>
       <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -55,7 +55,7 @@
     <div class="section-body about-body">
       <img class="about-photo" src="headshot.jpg" alt="Timi Folayan" width="140" height="140">
       <div class="about-text">
-        <p>I'm a Software Engineering student at Rose-Hulman Institute of Technology (minoring in Geography), graduating May 2027. Last summer I was the sole software engineer on a multidisciplinary team building the full software stack behind a gas valve calibration system - this summer I'm a Sales Development Engineering Intern at Emerson in Austin, a role that sits right at the intersection of the two things I'm building toward: writing solid software, and being able to explain technical systems clearly to the people who have to rely on them.</p>
+        <p>I'm a Software Engineering student at Rose-Hulman Institute of Technology (minoring in Geography), graduating May 2027. At RHV I was the sole software engineer on a multidisciplinary team building the software behind a gas valve calibration system. I then completed a Sales Development Engineering internship at Emerson (NI) in Austin: opportunity pipeline work, live MioDAQ demos, and translating measurement systems for people who have to trust them. That mix is what I'm building toward: solid software, and clear technical communication.</p>
         <p>Outside of internships and coursework, I TA for a formal methods course, work as a Learning Advisor helping 6th-12th graders with STEM homework, and I'm an avid music enjoyer/creator, content creator, gamer, and fly guy.</p>
       </div>
     </div>
@@ -75,7 +75,7 @@
           <p class="mono tl-date">Expected May 2027</p>
           <h3>B.S. Software Engineering, Geography Minor</h3>
           <p class="tl-org">Rose-Hulman Institute of Technology · Terre Haute, IN</p>
-          <p>Coursework in Object-Oriented Development, Operating Systems, Web Development, DSA, Digital Systems, Databases, Practical Security, Mathematical Proofs, Formal Methods, and Combinatorics.</p>
+          <p>Coursework includes Object-Oriented Development, Operating Systems, Web Development, Data Structures &amp; Algorithms, Digital Systems, Databases, Formal Methods, Practical Security, Software Design, Software Architecture, Software Project Management, Software Requirements, and Software Quality Assurance.</p>
         </div>
       </article>
 
@@ -100,12 +100,12 @@
       </svg>
 
       <article class="tl-item">
-        <div class="tl-node tl-node-live"></div>
+        <div class="tl-node"></div>
         <div class="tl-card">
           <p class="mono tl-date">Summer 2026</p>
           <h3>Sales Development Engineering Intern</h3>
           <p class="tl-org">Emerson (NI) · Austin, TX</p>
-          <p>Presented the MioDAQ at Emerson's Tech Expo, translating data-acquisition hardware fundamentals for a technical audience. Completed NI product certification and onboarding, and picked up LinkedIn Sales Navigator to build out technical relationships.</p>
+          <p>Built an opportunity pipeline from inbound demand and proposed tailored hardware/software solutions, generating over $1,600,000 in individual opportunity dollars. Led live MioDAQ demos at a company-wide Tech Expo, translating data-acquisition concepts into customer value. Built and documented internal projects that showcased NI hardware/software for community outreach. Used LinkedIn Sales Navigator for account intelligence and prospect qualification alongside sales engineers.</p>
         </div>
       </article>
 
@@ -162,7 +162,7 @@
         <div class="card-corner bl"></div><div class="card-corner br"></div>
         <p class="mono card-eyebrow"><span class="dot dot-live"></span>PYTHON · MCP · NI</p>
         <h3>DAQ MCP Server</h3>
-        <p>An MCP server that lets AI coding clients like Cursor reach past the editor and into physical NI DAQ hardware - discover, read, and write channels through structured tools instead of ad-hoc scripts. Writes are off by default, with channel allowlists, direction enforcement, analog output clamping, and write read-back verification. The same tool surface runs fully simulated with no NI hardware, or against a real NI-DAQmx driver, and streams live acquisition to a Starlette/SSE dashboard.</p>
+        <p>An MCP server that lets AI coding clients like Cursor reach past the editor and into physical NI DAQ hardware - discover, read, and write channels through structured tools instead of ad-hoc scripts. A 5-layer safety model (writes off by default, channel allowlists, direction enforcement, analog-output clamping, digital write read-back) shared by agent tools and the live dashboard. The same tool surface runs fully simulated with no NI hardware, or against a real NI-DAQmx driver, and streams live acquisition to a Starlette/SSE dashboard.</p>
         <div class="card-links">
           <a href="daq-mcp.html" class="mono">view project →</a>
           <a href="https://github.com/rhit-folayaod/daq-mcp" class="mono" target="_blank" rel="noopener">view repo →</a>
@@ -196,12 +196,12 @@
       <article class="card card-live">
         <div class="card-corner tl"></div><div class="card-corner tr"></div>
         <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow"><span class="dot dot-live"></span>TYPESCRIPT · REACT · VITE</p>
+        <p class="mono card-eyebrow"><span class="dot dot-live"></span>TYPESCRIPT · REACT · VITE · ZUSTAND</p>
         <h3>LinkedLife</h3>
-        <p>A satirical LinkedIn life-sim in the browser: cold-message strangers, hold conversations, sit interviews, and climb a career ladder. A local classifier drives all game logic and consequences; an LLM is only ever used to write flavor text, so the game is fully playable and deterministic with zero API calls. Headless bot playthroughs validate game balance across thousands of simulated turns.</p>
+        <p>A satirical corporate life-sim in the browser across ~97 TypeScript modules: cold-message strangers, hold conversations, sit interviews, and climb a career ladder. A local classifier owns all game consequences; an LLM, if present, only writes flavor text. Deterministic and seeded, fully playable with zero API calls. 470+ automated tests include headless bot playthroughs over thousands of turns.</p>
         <div class="card-links">
           <a href="linkedlife.html" class="mono">view project →</a>
-          <a href="https://linklife.vercel.app" class="mono" target="_blank" rel="noopener">try it →</a>
+          <a href="https://www.linked-life.com" class="mono" target="_blank" rel="noopener">try it →</a>
         </div>
       </article>
 
@@ -244,7 +244,7 @@
         <div class="card-corner bl"></div><div class="card-corner br"></div>
         <p class="mono card-eyebrow">SQL · JAVA · SQL SERVER</p>
         <h3>Lost and Found Database</h3>
-        <p>A full database system for a lost and found application on Microsoft SQL Server, cutting item retrieval time by 40%. Built a Java UI for admins and users on top of it, applying object-oriented design and Java-SQL connectivity for a maintainable, scalable system.</p>
+        <p>A lost-and-found application on Microsoft SQL Server with a Java UI for admins and users. Applied object-oriented design and Java-SQL connectivity for a maintainable system.</p>
         <div class="card-links">
           <a href="lost-and-found.html" class="mono">view project →</a>
         </div>
@@ -266,7 +266,7 @@
         <div class="card-corner bl"></div><div class="card-corner br"></div>
         <p class="mono card-eyebrow">HTML · CSS · JAVASCRIPT</p>
         <h3>Online Sports Webstore</h3>
-        <p>An online web store built from scratch with a responsive HTML/CSS/JavaScript interface, driving a 50% increase in user engagement. Implemented CRUD operations for dynamic product management and order processing, cutting order errors by 25%. Pair-programmed with a teammate to integrate real-time product and order-tracking features.</p>
+        <p>An online web store built from scratch with a responsive HTML/CSS/JavaScript interface. Implemented CRUD for product management and order processing, and pair-programmed real-time product and order-tracking features with a teammate.</p>
         <div class="card-links">
           <a href="online-sports-webstore.html" class="mono">view project →</a>
         </div>
@@ -292,23 +292,27 @@
     <div class="skills-grid">
       <div class="skill-group">
         <p class="mono skill-label">languages</p>
-        <p>Python · Java · TypeScript · JavaScript · C# · C · C++ · SQL · HTML/CSS · Verilog</p>
+        <p>Python · Java · SQL · C# · TypeScript · JavaScript · HTML/CSS · C · C++</p>
       </div>
       <div class="skill-group">
-        <p class="mono skill-label">tools & platforms</p>
-        <p>Git · Docker · React · Vite · Fly.io · Vercel · VS Code · IntelliJ · Eclipse IDE · Firebase · Mathematica</p>
+        <p class="mono skill-label">ai &amp; agent tooling</p>
+        <p>MCP · FastMCP · OpenAI API · Cursor · Claude Code · Claude API · Grok Bot</p>
       </div>
       <div class="skill-group">
-        <p class="mono skill-label">backend & mlops</p>
-        <p>FastAPI · PostgreSQL · Supabase · MCP · Kubernetes (GKE) · MLflow · scikit-learn · GitHub Actions (CI/CD) · OpenAI API</p>
+        <p class="mono skill-label">frameworks</p>
+        <p>React · Next.js · Vite · Zustand · Tailwind CSS · FastAPI · Pydantic · scikit-learn</p>
+      </div>
+      <div class="skill-group">
+        <p class="mono skill-label">data &amp; infra</p>
+        <p>PostgreSQL · MS SQL Server · Supabase · Docker · Kubernetes · MLflow · GitHub Actions · Fly.io · Vercel</p>
+      </div>
+      <div class="skill-group">
+        <p class="mono skill-label">tools</p>
+        <p>Git · VS Code · IntelliJ · Eclipse · NI-DAQmx · pytest · Vitest · uv · Playwright</p>
       </div>
       <div class="skill-group">
         <p class="mono skill-label">hardware / lab</p>
-        <p>NI-DAQmx · nidaqmx · Modbus TCP/IP · Arduino · Quartus · ModelSim · MSS</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label">practice</p>
-        <p>pytest · Vitest · Unit testing · Formal methods & proofs · Data structures & algorithms</p>
+        <p>NI-DAQmx · Modbus TCP/IP · Arduino · Quartus · ModelSim</p>
       </div>
     </div>
   </section>
@@ -323,11 +327,15 @@
       </div>
       <div class="skill-group">
         <p class="mono skill-label"><span class="dot dot-live dot-inline"></span>2024 - present</p>
-        <p><strong>Member</strong> (Former Public Relations Chair), National Society of Black Engineers</p>
+        <p><strong>Member</strong>, National Society of Black Engineers (Former PR Chair)</p>
       </div>
       <div class="skill-group">
         <p class="mono skill-label"><span class="dot dot-live dot-inline"></span>2023 - present</p>
-        <p><strong>Member</strong>, Linux Users Group & Computer Security Club</p>
+        <p><strong>Member</strong>, ColorStack</p>
+      </div>
+      <div class="skill-group">
+        <p class="mono skill-label"><span class="dot dot-live dot-inline"></span>2023 - present</p>
+        <p><strong>Member</strong>, Linux Users Group &amp; Computer Security Club</p>
       </div>
     </div>
   </section>
