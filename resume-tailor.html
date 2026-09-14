@@ -35,15 +35,14 @@
   <section class="detail-section" id="top">
     <a href="index.html#projects" class="mono back-link">← back to projects</a>
     <h1 class="detail-title">Resume Tailor</h1>
-    <p class="mono card-eyebrow detail-eyebrow"><span class="dot dot-live"></span>PYTHON · FASTAPI · LATEX</p>
+    <p class="mono card-eyebrow detail-eyebrow">PYTHON · FASTAPI · LATEX</p>
     <div class="about-text">
       <p>A web app and CLI that ranks pre-written resume bullets against a job posting and compiles a tailored PDF via LaTeX/Tectonic.</p>
       <p>The design constraint that matters: it cannot invent resume content. Printed text only comes from a validated store. An optional LLM rerank step can only reorder existing bullet IDs - it never emits new bullet text. Job-post parsing extracts required and preferred skills for scoring, not for printing.</p>
-      <p>The same codebase runs locally against a YAML store or hosted with Supabase Auth and Postgres. FastAPI serves a plain HTML/JS UI; Tectonic compiles the PDF inside Docker on Fly.io.</p>
+      <p>The same codebase runs locally against a YAML store or hosted with Supabase Auth and Postgres. FastAPI serves a plain HTML/JS UI; Tectonic compiles the PDF inside Docker. The Fly.io hosted demo is currently paused.</p>
     </div>
     <div class="card-links">
       <a href="https://github.com/rhit-folayaod/ai-resume-tailor" class="mono" target="_blank" rel="noopener">view repo →</a>
-      <a href="https://ai-resume-tailor.fly.dev" class="mono" target="_blank" rel="noopener">try it →</a>
     </div>
     <div class="skills-grid detail-stack">
       <div class="skill-group">
