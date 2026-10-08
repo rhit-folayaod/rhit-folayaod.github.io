@@ -13,6 +13,10 @@ const modules = {
 };
 
 /* ---------- per-theme stylesheets: loaded once, switched by media ---------- */
+// WebKit (iOS Safari) often never fires load/error for <link media="not all">,
+// so awaiting onload alone hung forever and left #main blank. Race a timeout
+// and never let CSS block the first paint.
+const SHEET_WAIT_MS = 1500;
 const sheets = new Map();
 function loadSheet(id) {
   if (!sheets.has(id)) {
@@ -20,7 +24,13 @@ function loadSheet(id) {
     l.rel = "stylesheet";
     l.href = `assets/css/${id}.css`;
     l.media = "not all";
-    const ready = new Promise((r) => { l.onload = r; l.onerror = r; });
+    const ready = Promise.race([
+      new Promise((r) => {
+        l.onload = () => r();
+        l.onerror = () => r();
+      }),
+      new Promise((r) => setTimeout(r, SHEET_WAIT_MS)),
+    ]);
     document.head.append(l);
     sheets.set(id, { link: l, ready });
   }
@@ -33,6 +43,17 @@ function activateSheet(id) {
 /** Fetch a theme's code and CSS without showing it (used by the desktop's boot window). */
 export function preload(id) {
   return Promise.all([modules[id]().then((m) => m.default), loadSheet(id)]);
+}
+
+/* ---------- plain fallback when render throws ---------- */
+function fallbackHtml(err) {
+  const msg = err && err.message ? String(err.message) : "unknown error";
+  return `<section class="boot-fallback" style="max-width:640px;margin:40px auto;padding:0 16px;font:16px/1.5 system-ui,sans-serif;color:#111;background:#fff">
+  <h1>Timi Folayan</h1>
+  <p>Software Engineering @ Rose-Hulman, May 2027. The interactive portfolio failed to load on this browser.</p>
+  <p><a href="Resume.pdf">Resume (PDF)</a> · <a href="https://github.com/rhit-folayaod">GitHub</a> · <a href="https://www.linkedin.com/in/timifolayan">LinkedIn</a> · <a href="mailto:folayaod@rose-hulman.edu">folayaod@rose-hulman.edu</a></p>
+  <p style="color:#666;font-size:13px">(${msg.replace(/[<>&]/g, "")})</p>
+</section>`;
 }
 
 /* ---------- routes ---------- */
@@ -54,23 +75,34 @@ let cleanups = [];
 let first = true;
 let seq = 0;
 async function render() {
-  const r = parse();
-  if (r.redirect) { location.replace(r.redirect); return; }
-  const n = ++seq;
-  const [theme] = await preload(r.theme);
-  if (n !== seq) return; // a newer navigation won
-  cleanups.forEach((f) => f());
-  cleanups = [];
-  const ctx = { cleanup: (f) => cleanups.push(f), reducedMotion: prefersReducedMotion(), preload };
-  const view = theme.render(r.path, ctx);
-  activateSheet(r.theme);
-  document.body.dataset.theme = r.theme;
-  document.body.dataset.screen = view.screen;
-  document.title = view.title;
-  main.innerHTML = view.html;
-  view.wire?.(main, ctx);
-  if (!first) (main.querySelector("[data-focus]") || main.querySelector("h1"))?.focus({ preventScroll: true });
-  first = false;
+  try {
+    const r = parse();
+    if (r.redirect) { location.replace(r.redirect); return; }
+    const n = ++seq;
+    const [theme] = await preload(r.theme);
+    if (n !== seq) return; // a newer navigation won
+    cleanups.forEach((f) => f());
+    cleanups = [];
+    const ctx = { cleanup: (f) => cleanups.push(f), reducedMotion: prefersReducedMotion(), preload };
+    const view = theme.render(r.path, ctx);
+    activateSheet(r.theme);
+    document.body.dataset.theme = r.theme;
+    document.body.dataset.screen = view.screen;
+    document.title = view.title;
+    main.innerHTML = view.html;
+    view.wire?.(main, ctx);
+    if (!first) (main.querySelector("[data-focus]") || main.querySelector("h1"))?.focus({ preventScroll: true });
+    first = false;
+  } catch (err) {
+    console.error("[boot] render failed", err);
+    try {
+      document.body.dataset.theme = "fallback";
+      document.body.style.background = "#fff";
+      main.innerHTML = fallbackHtml(err);
+    } catch (_) {
+      /* last resort: leave whatever is on screen */
+    }
+  }
 }
 
 addEventListener("hashchange", render);

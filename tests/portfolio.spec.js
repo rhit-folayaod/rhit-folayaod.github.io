@@ -95,3 +95,13 @@ test("old URLs land in the Block Craft theme", async ({ page }) => {
   await page.goto("/#/experience");
   await expect(page).toHaveURL(/#\/minecraft\/experience$/);
 });
+
+test("boot never leaves #main blank (CSS load must not block forever)", async ({ page }) => {
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  await page.goto("/");
+  await expect(page.locator("#main")).not.toBeEmpty({ timeout: 2500 });
+  await expect(page.locator("#main")).not.toContainText("interactive portfolio failed", { timeout: 1000 });
+  await expect(page.getByRole("heading", { name: "Welcome.exe" })).toBeVisible({ timeout: 2500 });
+  expect(errors, errors.join("\n")).toEqual([]);
+});
