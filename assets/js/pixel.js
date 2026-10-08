@@ -352,14 +352,29 @@ const draw = {
     set(g, 10, 8, GOLD);
     outline(g); return g;
   },
-  dice() {
+  // The glory crown: same 16x16 pixels as favicon / apple-touch-icon / og-card
+  // (tools/gen_icons.py). Already outlined, so no auto-outline pass.
+  crown() {
     const g = grid(16);
-    fill(g, (x, y) => x >= 2 && x <= 12 && y >= 3 && y <= 13, "#f4f1ea");
-    fill(g, (x, y) => (x === 12 || y === 13) && x >= 2 && y >= 3, "#c9c2b2");
-    for (const [x, y] of [[4, 5], [9, 5], [6, 8], [4, 11], [9, 11]]) { set(g, x, y, "#c62828"); set(g, x + 1, y, "#c62828"); }
-    // sparkle
-    line(g, 14, 0, 14, 4, "#ffd84a"); line(g, 12, 2, 15, 2, "#ffd84a"); set(g, 14, 2, "#fff6c8");
-    outline(g); return g;
+    rows(g, 0, 0, [
+      "................",
+      ".oo....oo....oo.",
+      "oRRo..oRRo..oRRo",
+      "oWRo..oWRo..oWRo",
+      ".oGo.oLGGDo.oGo.",
+      ".oGGoLGGGGDoGDo.",
+      ".oLGGGGGGGGGGDo.",
+      ".oLGGGGGGGGGGDo.",
+      ".oLGRGGBBGGRGDo.",
+      ".oLGGGGBBGGGGDo.",
+      ".oLGGGGGGGGGGDo.",
+      ".oDDDDDDDDDDDDo.",
+      ".oLLLLLLLLLLLLo.",
+      ".oDDDDDDDDDDDDo.",
+      ".oooooooooooooo.",
+      "................",
+    ], { o: "#3a2400", G: "#f2c230", L: "#ffe680", D: "#c48a12", R: "#d6303a", B: "#3a7bd5", W: "#ffd0d0" });
+    return g;
   },
   /* ---------- earlier projects ---------- */
   branches() {
@@ -435,17 +450,6 @@ const draw = {
     fill(g, (x, y) => (x - 10) ** 2 + (y - 12) ** 2 <= 1.2, "#fdd835");
     fill(g, (x, y) => (x - 13) ** 2 + (y - 12) ** 2 <= 1.2, "#29b6f6");
     outline(g); return g;
-  },
-  monogram() {
-    const g = grid(12);
-    rows(g, 0, 2, [
-      "#####.####.",
-      "..#...#....",
-      "..#...###..",
-      "..#...#....",
-      "..#...#....",
-    ], { "#": "#101010" });
-    return g;
   },
 };
 

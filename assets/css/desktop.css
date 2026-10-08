@@ -83,6 +83,8 @@ a { color: #0000ee; }
 .btn-ico { width: 18px; height: 18px; }
 .win-glory { width: min(360px, 92vw); }
 .picking { display: grid; gap: 10px; }
+.picking-head { display: flex; align-items: center; gap: 8px; margin: 0; }
+.picking-crown { width: 24px; height: 24px; flex: none; }
 .reel { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: #fff; box-shadow: var(--sunken); }
 .reel-ico { width: 40px; height: 40px; flex: none; }
 .reel-name { font-size: 16px; font-weight: 700; }
