@@ -1,0 +1,42 @@
+/* Shared by every screen. Each theme's own sheet (assets/css/<theme>.css) is
+   loaded on first visit and only applies while that theme is showing. */
+
+/* Fonts: all SIL Open Font License 1.1, see assets/fonts/OFL-*.txt */
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url("../fonts/pixelify-sans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+/* Digits only (U+0030-0039) from VT323. Put "TF Digits" first in a font stack
+   and every number on that screen uses it, while letters fall through to the
+   next font. Pixelify's 5 reads like a 2 at small sizes; VT323's does not. */
+@font-face {
+  font-family: "TF Digits";
+  src: url("../fonts/vt323-digits.woff2") format("woff2");
+  unicode-range: U+0030-0039;
+  size-adjust: 118%;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; }
+img, svg { display: block; }
+svg.px { width: 100%; height: 100%; image-rendering: pixelated; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+button { font: inherit; }
+main { min-height: 100dvh; outline: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 8px; top: -60px; z-index: 100; padding: 8px 12px; background: #000; color: #ff5; font: 16px/1.2 sans-serif; }
+.skip:focus { top: 8px; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+}
+[data-motion="reduced"] *, [data-motion="reduced"] *::before, [data-motion="reduced"] *::after {
+  animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important;
+}
+/* Headings get focus after navigation so screen readers land there; no ring needed. */
+h1[tabindex="-1"]:focus, main[tabindex="-1"]:focus { outline: none !important; box-shadow: none !important; }

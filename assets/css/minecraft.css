@@ -1,11 +1,4 @@
-/* Pixelify Sans: SIL Open Font License 1.1, see assets/fonts/OFL-PixelifySans.txt */
-@font-face {
-  font-family: "Pixelify Sans";
-  src: url("../fonts/pixelify-sans.woff2") format("woff2");
-  font-weight: 400 700;
-  font-display: swap;
-}
-
+/* Block Craft theme (the original title-screen site). Fonts load in base.css. */
 :root {
   --ink: #f2f2f2;
   --ink-dim: #a8a8a8;
@@ -24,7 +17,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: "Pixelify Sans", ui-monospace, monospace;
+  font-family: "TF Digits", "Pixelify Sans", ui-monospace, monospace;
   font-size: 16px;
   line-height: 1.45;
   color: var(--ink);
@@ -103,9 +96,9 @@ main { height: 100dvh; outline: none; }
 .screen {
   height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto auto;
   gap: 10px;
-  padding: 14px var(--pad) 12px;
+  padding: 14px var(--pad) 8px;
   max-width: 1040px;
   margin: 0 auto;
 }
@@ -137,6 +130,7 @@ main { height: 100dvh; outline: none; }
 /* ---------- title ---------- */
 .screen-title {
   grid-template-rows: auto 1fr auto;
+  padding-bottom: 12px;
   max-width: none;
   justify-items: center;
 }
@@ -170,7 +164,10 @@ main { height: 100dvh; outline: none; }
   text-align: right;
   text-shadow: 1px 1px 0 #000;
   padding-left: 190px;
+  max-width: 560px;
 }
+.legal-sub { justify-self: center; text-align: center; max-width: none; padding: 0; font-size: 11px; color: #bdbdbd; }
+.menu .quit { margin-top: 2px; }
 
 .corner { position: fixed; z-index: 5; bottom: 10px; display: flex; align-items: center; gap: 6px; }
 .corner-left { left: 10px; }
@@ -211,7 +208,7 @@ body:not([data-screen="title"]) .version { display: none; }
 .bullets li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 8px; height: 8px; background: var(--green); box-shadow: 1px 1px 0 #1d6b1d; }
 
 /* ---------- projects ---------- */
-.screen-projects { grid-template-rows: auto auto 1fr auto auto; }
+.screen-projects { grid-template-rows: auto auto 1fr auto auto auto; }
 .search input {
   display: block;
   width: min(520px, 100%);
@@ -379,6 +376,7 @@ body:not([data-screen="title"]) .version { display: none; }
   body { font-size: 15px; }
   .screen { padding-top: 10px; gap: 8px; }
   .legal { justify-self: center; text-align: center; padding: 0 0 46px; font-size: 11px; }
+  .legal-sub { min-height: 32px; padding: 0 0 0 76px; font-size: 10px; text-align: left; }
   .menu { margin-top: 0; }
   .xp { grid-template-columns: 1fr; gap: 6px; padding: 16px; }
   .xp-when span { display: inline; margin-left: 8px; }
@@ -401,7 +399,6 @@ body:not([data-screen="title"]) .version { display: none; }
   .about { grid-template-columns: 1fr; padding: 14px; }
   .about-left { justify-items: stretch; }
   .photo { width: 160px; justify-self: center; }
-  .screen:not(.screen-title) .screen-foot { padding-left: 76px; padding-right: 0; }
-  .screen.screen-projects .screen-foot { padding-left: 0; padding-bottom: 46px; }
+
   .corner .mc-square { width: 30px; min-width: 30px; min-height: 30px; }
 }
