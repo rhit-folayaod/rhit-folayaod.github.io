@@ -9,7 +9,7 @@ const EXTRAS = [
   { id: "computer", name: "My Computer", icon: "computer", tip: "Contact links" },
   { id: "bin", name: "Recycle Bin", icon: "bin", tip: "Recycle Bin" },
 ];
-const GLORY = { id: "glory", name: "glory", icon: "dice", tip: "Opens a random game" };
+const GLORY = { id: "glory", name: "glory", icon: "crown", tip: "Opens a random game" };
 const ICONS = [
   ...THEMES.map((t) => ({ id: t.id, name: t.name, icon: t.icon, tip: t.style, game: true })),
   GLORY,
@@ -32,11 +32,11 @@ function welcomeBody() {
         <p class="welcome-links">${contactLinks.map((l) => `<a href="${l.href}" ${linkAttrs(l)}>${esc(l.id === "resume" ? "Resume.pdf" : l.label)}</a>`).join("")}</p>
       </div>
     </div>
-    <div class="win-actions"><button type="button" class="w-btn w-default" data-open="glory"><span class="btn-ico">${icon("dice")}</span>Open glory</button><button type="button" class="w-btn" data-close>Close</button></div>`;
+    <div class="win-actions"><button type="button" class="w-btn w-default" data-open="glory"><span class="btn-ico">${icon("crown")}</span>Open glory</button><button type="button" class="w-btn" data-close>Close</button></div>`;
 }
 function gloryBody() {
   return `<div class="win-body picking">
-      <p id="glory-status" aria-live="polite">Picking a game...</p>
+      <p class="picking-head"><span class="picking-crown">${icon("crown")}</span><span id="glory-status" aria-live="polite">Picking a game...</span></p>
       <div class="reel" aria-hidden="true"><span class="reel-ico"></span><span class="reel-name"></span></div>
     </div>
     <div class="win-actions"><button type="button" class="w-btn" data-close>Cancel</button></div>`;
@@ -107,7 +107,7 @@ function html() {
       <span class="dicon-img">${icon(d.icon)}</span><span class="dicon-label">${esc(d.name)}</span></button></li>`).join("");
   const startItems = [
     ...THEMES.map((t) => `<li><button type="button" role="menuitem" data-open="${t.id}" title="${esc(t.style)}"><span class="sm-ico">${icon(t.icon)}</span>${esc(t.name)}</button></li>`),
-    `<li><button type="button" role="menuitem" data-open="glory"><span class="sm-ico">${icon("dice")}</span>glory (random game)</button></li>`,
+    `<li><button type="button" role="menuitem" data-open="glory"><span class="sm-ico">${icon("crown")}</span>glory (random game)</button></li>`,
     `<li class="sep" role="separator"></li>`,
     ...EXTRAS.map((x) => `<li><button type="button" role="menuitem" data-open="${x.id}"><span class="sm-ico">${icon(x.icon)}</span>${esc(x.name)}</button></li>`),
     `<li class="sep" role="separator"></li>`,
@@ -125,7 +125,7 @@ function html() {
     <ul>${startItems}</ul>
   </div>
   <footer class="taskbar">
-    <button type="button" class="start" id="start" aria-haspopup="menu" aria-expanded="false" aria-controls="startmenu"><span class="start-ico">${icon("monogram")}</span>Start</button>
+    <button type="button" class="start" id="start" aria-haspopup="menu" aria-expanded="false" aria-controls="startmenu"><span class="start-ico">${icon("crown")}</span>Start</button>
     <div class="tasks" id="tasks" aria-label="Open windows"></div>
     <p class="tb-hint"><span class="wide-only">Click any icon to open it. Esc backs out of a game.</span><span class="narrow-only">Tap an icon to open it.</span></p>
     <div class="tray"><time id="clock"></time></div>
@@ -218,7 +218,7 @@ function wire(root, ctx) {
     const pick = pool[Math.floor(Math.random() * pool.length)];
     if (ctx.reducedMotion) return boot(pick.id);
     if (picking) return;
-    const w = openWin("glory", "glory", "dice", gloryBody());
+    const w = openWin("glory", "glory", "crown", gloryBody());
     const ico = w.querySelector(".reel-ico"), name = w.querySelector(".reel-name"), status = w.querySelector("#glory-status");
     const token = (picking = {});
     let i = Math.floor(Math.random() * THEMES.length), n = 0;

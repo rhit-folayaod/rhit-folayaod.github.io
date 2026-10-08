@@ -38,6 +38,21 @@ test("glory picks a random game, never the one opened last", async ({ page }) =>
   await expect(page.locator("main h1")).toBeVisible();
 });
 
+test("the glory crown (same pixels as the favicon) is on the icon, Start, menu, and picker", async ({ page }) => {
+  await page.goto("/");
+  const crown = 'svg rect[fill="#f2c230"] ~ rect[fill="#3a7bd5"]';
+  await expect(page.getByRole("button", { name: "glory", exact: true }).locator(crown).first()).toBeAttached();
+  const start = page.getByRole("button", { name: "Start" });
+  await expect(start.locator(crown).first()).toBeAttached();
+  await expect(start).not.toContainText("TF");
+  await start.click();
+  await expect(page.getByRole("menuitem", { name: /glory/ }).locator(crown).first()).toBeAttached();
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "Open glory" }).click();
+  await expect(page.locator(".picking-crown").locator(crown).first()).toBeAttached();
+  await expect(page.locator('[data-win="glory"] .win-ico').locator(crown).first()).toBeAttached();
+});
+
 test("every theme shows the same experience and projects, and has a way home", async ({ page }) => {
   for (const t of THEMES) {
     await page.goto(`/#/${t}/experience`);
