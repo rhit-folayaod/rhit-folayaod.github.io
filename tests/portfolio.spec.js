@@ -160,3 +160,36 @@ test("boot never leaves #main blank (CSS load must not block forever)", async ({
   await expect(page.getByRole("heading", { name: "Welcome.exe" })).toBeVisible({ timeout: 2500 });
   expect(errors, errors.join("\n")).toEqual([]);
 });
+
+test("link previews: meta tags are in the raw HTML and every icon is served", async ({ request }) => {
+  // Crawlers (iMessage, Slack, LinkedIn, Discord) read the HTML as served; they never run boot.js.
+  const html = await (await request.get("/")).text();
+  const meta = (attr, key) => html.match(new RegExp(`<meta ${attr}="${key}" content="([^"]*)"`))?.[1];
+  const desc = "Software Engineering @ Rose-Hulman (May 2027). Pick a game to explore my experience and projects.";
+  expect(html).toContain("<title>Timi Folayan | Portfolio</title>");
+  expect(html).toContain('<link rel="canonical" href="https://timifolayan.com/">');
+  expect(meta("name", "description")).toBe(desc);
+  expect(meta("property", "og:title")).toBe("Timi Folayan | Portfolio");
+  expect(meta("property", "og:site_name")).toBe("Timi Folayan Portfolio");
+  expect(meta("property", "og:description")).toBe(desc);
+  expect(meta("property", "og:url")).toBe("https://timifolayan.com/");
+  expect(meta("property", "og:type")).toBe("website");
+  expect(meta("property", "og:image")).toBe("https://timifolayan.com/assets/og/og-card.png");
+  expect(meta("property", "og:image:width")).toBe("1200");
+  expect(meta("property", "og:image:height")).toBe("630");
+  expect(meta("property", "og:image:alt")).toBeTruthy();
+  expect(meta("name", "twitter:card")).toBe("summary_large_image");
+  expect(meta("name", "twitter:image")).toBe("https://timifolayan.com/assets/og/og-card.png");
+  expect(html).not.toContain("rhit-folayaod.github.io/");
+
+  for (const path of ["/assets/og/og-card.png", "/apple-touch-icon.png", "/favicon-32x32.png", "/assets/og/icon-192.png", "/assets/og/icon-512.png"]) {
+    const res = await request.get(path);
+    expect(res.status(), path).toBe(200);
+    expect(res.headers()["content-type"], path).toBe("image/png");
+  }
+  expect((await request.get("/favicon.ico")).status()).toBe(200);
+  expect((await request.get("/favicon.svg")).headers()["content-type"]).toContain("image/svg+xml");
+  const manifest = await (await request.get("/site.webmanifest")).json();
+  expect(manifest).toMatchObject({ name: "Timi Folayan Portfolio", short_name: "Timi" });
+  expect(manifest.icons.map((i) => i.sizes)).toEqual(["192x192", "512x512"]);
+});

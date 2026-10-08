@@ -26,6 +26,8 @@ Static HTML/CSS/JS served straight from `main` by GitHub Pages. No build step.
 - `assets/js/shared.js`: theme list, disclaimer, small helpers
 - `assets/js/pixel.js`: all icons, drawn in code and emitted as SVG
 - `assets/img/`: generated art for Block Craft (`npm run art` rebuilds it)
+- `assets/og/og-card.png`, `favicon.*`, `apple-touch-icon.png`, `site.webmanifest`: link-preview card and icons, all built from one pixel gold crown (the glory symbol). `npm run icons` rebuilds them.
+- `CNAME`: serves the site at https://timifolayan.com. Keep it.
 - Old `*.html` project pages are redirect stubs.
 
 ## Art, fonts, and the fan-made part

@@ -371,5 +371,5 @@ function wire(root, ctx) {
 }
 
 export default {
-  render: () => ({ html: html(), wire, screen: "desktop", title: "Timi Folayan | Software Engineering @ Rose-Hulman" }),
+  render: () => ({ html: html(), wire, screen: "desktop", title: "Timi Folayan | Portfolio" }),
 };

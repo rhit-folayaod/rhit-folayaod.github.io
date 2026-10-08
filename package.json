@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "python3 -m http.server 4173",
     "test:e2e": "playwright test",
-    "art": "python3 tools/gen_art.py && node tools/gen-wordmark.mjs"
+    "art": "python3 tools/gen_art.py && node tools/gen-wordmark.mjs",
+    "icons": "python3 tools/gen_icons.py && node tools/gen-og.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.64.0"
