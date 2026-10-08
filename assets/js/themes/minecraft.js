@@ -1,8 +1,8 @@
-// "Block Craft": the original block-game title screen, now one theme of five.
+// "Block Craft": the original block-game title screen, now one theme of eight.
 // Routes: #/minecraft, #/minecraft/experience, /projects[/<id>], /skills, /about
 import { icon, runes } from "../pixel.js";
 import { links, experience, projects, statusInfo, skills, about } from "../data.js";
-import { esc, ext, DISCLAIMER, usedIn } from "../shared.js";
+import { esc, ext, DISCLAIMER, usedIn, noSource, groupStart, relatedProject, earlierProjects } from "../shared.js";
 
 const R = (p = "") => `#/minecraft${p ? `/${p}` : ""}`;
 
@@ -142,7 +142,7 @@ function projectsScreen() {
       <input type="search" id="proj-search" placeholder="Search projects..." autocomplete="off" spellcheck="false">
     </label>
     <div class="panel scroll">
-      <ul class="proj-list" id="proj-list" aria-label="Projects">${projects.map(projectRow).join("")}</ul>
+      <ul class="proj-list" id="proj-list" aria-label="Projects">${projects.map((p) => groupStart(p, "proj-grp") + projectRow(p)).join("")}</ul>
       <p class="empty" id="proj-empty" hidden></p>
     </div>
     <p class="count" id="proj-count" aria-live="polite"></p>`;
@@ -167,7 +167,7 @@ function wireProjects(root) {
     gh.disabled = !p?.repo;
     cancel.disabled = !p;
     open.textContent = p?.live ? "Open site" : "Open";
-    gh.title = p && !p.repo ? "Source is private" : "";
+    gh.title = p && !p.repo ? noSource(p).replace(".", "") : "";
     const n = visible().length;
     count.textContent = p ? `${p.name} selected` : `${n} project${n === 1 ? "" : "s"} · select a project for actions`;
   }
@@ -207,6 +207,8 @@ function wireProjects(root) {
       list.querySelector(`[data-id="${p.id}"]`).closest("li").hidden = !hit;
       if (!hit && selected === p.id) selected = null;
     });
+    const grp = list.querySelector(".proj-grp");
+    if (grp) grp.hidden = !earlierProjects.some((p) => !list.querySelector(`[data-id="${p.id}"]`).closest("li").hidden);
     const n = visible().length;
     empty.hidden = n > 0;
     empty.textContent = n ? "" : `Nothing matches "${e.target.value.trim()}". Try a language like Python or a tool like Docker.`;
@@ -227,7 +229,8 @@ function projectDetail(p) {
       <p class="lead">${esc(p.blurb)}</p>
       ${p.detail.map((d) => `<p>${esc(d)}</p>`).join("")}
       ${chips(p.tags)}
-      ${!p.repo ? `<p class="note">Source is private.</p>` : ""}
+      ${!p.repo ? `<p class="note">${noSource(p)}</p>` : ""}
+      ${relatedProject(p) ? `<p class="note">See also: <a href="${R(`projects/${relatedProject(p).id}`)}">${esc(relatedProject(p).name)}</a></p>` : ""}
     </div>`;
   return screen(`detail`, p.name, body, `<div class="bar2">${actions}${backBtn(R("projects"))}</div>`);
 }

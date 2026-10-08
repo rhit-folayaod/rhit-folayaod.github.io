@@ -9,6 +9,9 @@ Timi Folayan's portfolio. It opens on a late-90s style desktop; each game icon o
 | Block Craft | block-game title screen (the original site) | `#/minecraft/...` |
 | Blue Blur Zone | zone select, act title cards, item monitors, rings | `#/sonic/...` |
 | Battle Royale Lobby | battle pass tiers, item shop, locker | `#/fortnite/...` |
+| Brick Hub | experience cards with Play, Studio-style Explorer + Properties for projects, badge grid, chat-bubble About | `#/roblox/...` |
+| Village Clash | top-down village: Town Hall is About, Barracks is Experience, Builder's Workshop is Projects, Laboratory is Skills | `#/clash/...` |
+| Arcade Clash | character select with a VS splash for projects, arcade ladder, move list with stat bars, player profile | `#/fighter/...` |
 
 Every theme has `/experience`, `/projects[/<id>]`, `/skills`, `/about`. Old links (`#/projects`, `#about`, `daq-mcp.html`, ...) land in Block Craft.
 
@@ -28,9 +31,9 @@ Static HTML/CSS/JS served straight from `main` by GitHub Pages. No build step.
 
 ## Art, fonts, and the fan-made part
 
-These are tributes, not affiliated with or endorsed by Nintendo, Sega, Epic Games, Re-Logic, Mojang, or Microsoft, and every screen says so. Nothing is ripped: no sprites, logos, music, sound, or official fonts, and no characters are drawn. Blocks, pipes, rings, crates and the desktop chrome are CSS, inline SVG, or `pixel.js`. On-screen names are parodies; only the desktop tooltips say which game a theme is styled after.
+These are tributes, not affiliated with or endorsed by Nintendo, Sega, Epic Games, Re-Logic, Mojang, Microsoft, Roblox Corporation, Supercell, or Capcom, and every screen says so. Nothing is ripped: no sprites, logos, music, sound, or official fonts, and no characters, avatars, or troops are drawn. Blocks, pipes, rings, crates, village buildings, and the desktop chrome are CSS, inline SVG, or `pixel.js`. On-screen names are parodies; only the desktop tooltips say which game a theme is styled after.
 
-Fonts are self-hosted, all SIL Open Font License 1.1 (`assets/fonts/OFL-*.txt`): Pixelify Sans, VT323 (digits only, so a 5 never reads as a 2), Press Start 2P, Jersey 10, Bungee, Anton.
+Fonts are self-hosted, all SIL Open Font License 1.1 (`assets/fonts/OFL-*.txt`): Pixelify Sans, VT323 (digits only, so a 5 never reads as a 2), Press Start 2P, Jersey 10, Bungee, Anton, Fredoka, Lilita One, Bowlby One.
 
 ## Checks
 
@@ -40,6 +43,8 @@ npx playwright install chromium   # or PW_CHANNEL=chrome to reuse an installed C
 npm run test:e2e
 ```
 
-Six journeys at 1440 and 390 wide: desktop boot + windows, glory never repeating the last game, every theme showing the same experience/projects with a way home, Block Craft's project/skills interactions, content hygiene across all 25 theme screens, and old-URL redirects. Not wired into CI yet.
+Eight journeys, each run at 1440 wide, 390 wide, and in WebKit with the iPhone 13 profile: desktop boot + windows, glory never repeating the last game, every theme showing the same experience/projects with a way home, Block Craft's project/skills interactions, content hygiene (and zero page errors) across all 40 theme screens, older projects listed after current ones and reachable from the new themes, old-URL redirects, and the never-blank boot. Not wired into CI yet.
+
+Projects marked `status: "earlier"` in `data.js` are course and earlier work; keep them at the end of the list.
 
 Local preview: `npm run serve`, then open http://localhost:4173.

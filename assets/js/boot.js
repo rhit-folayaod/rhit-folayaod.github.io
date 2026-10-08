@@ -10,6 +10,9 @@ const modules = {
   terraria: () => import("./themes/terraria.js"),
   sonic: () => import("./themes/sonic.js"),
   fortnite: () => import("./themes/fortnite.js"),
+  roblox: () => import("./themes/roblox.js"),
+  clash: () => import("./themes/clash.js"),
+  fighter: () => import("./themes/fighter.js"),
 };
 
 /* ---------- per-theme stylesheets: loaded once, switched by media ---------- */

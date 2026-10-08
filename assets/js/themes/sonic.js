@@ -2,7 +2,7 @@
 // every job gets an act title card, projects are item monitors, skills are rings.
 import { icon } from "../pixel.js";
 import { links, experience, projects, statusInfo, skills, about } from "../data.js";
-import { esc, ext, DISCLAIMER, contactLinks, linkAttrs, usedIn, setSubPath } from "../shared.js";
+import { esc, ext, DISCLAIMER, contactLinks, linkAttrs, usedIn, setSubPath, noSource, groupStart } from "../shared.js";
 
 const R = (p = "") => `#/sonic${p ? `/${p}` : ""}`;
 const ZONES = [
@@ -79,12 +79,12 @@ function detail(p) {
       <p class="s-lead">${esc(p.blurb)}</p>
       ${p.detail.map((d) => `<p>${esc(d)}</p>`).join("")}
       <ul class="s-tags">${p.tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-      <p class="s-actions">${p.live ? `<a class="s-go" href="${p.live}" ${ext}>Open site</a>` : ""}${p.repo ? `<a class="s-go" href="${p.repo}" ${ext}>GitHub</a>` : `<span class="s-note">Source is private.</span>`}</p>
+      <p class="s-actions">${p.live ? `<a class="s-go" href="${p.live}" ${ext}>Open site</a>` : ""}${p.repo ? `<a class="s-go" href="${p.repo}" ${ext}>GitHub</a>` : `<span class="s-note">${noSource(p)}</span>`}</p>
     </article>`;
 }
 function projectsPage(sel) {
   const cur = projects.find((p) => p.id === sel) || projects[0];
-  const mons = projects.map((p) => `<li><button type="button" class="s-monitor" data-id="${p.id}" aria-pressed="${p === cur}">
+  const mons = projects.map((p) => `${groupStart(p, "s-grp")}<li><button type="button" class="s-monitor" data-id="${p.id}" aria-pressed="${p === cur}">
       <span class="s-tv"><span class="s-screen">${icon(p.icon)}</span></span><span class="s-mname">${esc(p.name)}</span></button></li>`).join("");
   return chrome("projects", `<h1 class="s-h" tabindex="-1"><small>Build Zone</small>Projects</h1>
     <div class="s-shop"><ul class="s-monitors" aria-label="Projects">${mons}</ul><div id="s-detail">${detail(cur)}</div></div>`);

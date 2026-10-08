@@ -3,7 +3,7 @@
 // every job talks to you in an NPC dialog box.
 import { icon } from "../pixel.js";
 import { links, experience, projects, statusInfo, skills, about } from "../data.js";
-import { esc, ext, DISCLAIMER, usedIn, setSubPath } from "../shared.js";
+import { esc, ext, DISCLAIMER, usedIn, setSubPath, noSource, groupStart } from "../shared.js";
 
 const R = (p = "") => `#/terraria${p ? `/${p}` : ""}`;
 const LAYERS = {
@@ -25,7 +25,7 @@ const HOTBAR = [
   { key: "9", label: "Map", icon: "tree", href: R(), page: "" },
   { key: "0", label: "Desktop", icon: "door", href: "#/" },
 ];
-const RARITY = { deployed: "#ffc896", released: "#9696ff", private: "#96ff96" };
+const RARITY = { deployed: "#ffc896", released: "#9696ff", private: "#96ff96", earlier: "#d2d2d2" };
 
 function chrome(pg, body) {
   const L = LAYERS[pg] ?? LAYERS[""];
@@ -78,12 +78,12 @@ function tooltip(p) {
       ${p.detail.map((d) => `<p>${esc(d)}</p>`).join("")}
       <p class="t-req">Crafted with</p>
       <ul class="t-mats">${p.tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-      <p class="t-actions">${p.live ? `<a class="t-btn" href="${p.live}" ${ext}>Open site</a>` : ""}${p.repo ? `<a class="t-btn" href="${p.repo}" ${ext}>GitHub</a>` : `<span class="t-private">Source is private.</span>`}</p>
+      <p class="t-actions">${p.live ? `<a class="t-btn" href="${p.live}" ${ext}>Open site</a>` : ""}${p.repo ? `<a class="t-btn" href="${p.repo}" ${ext}>GitHub</a>` : `<span class="t-private">${noSource(p)}</span>`}</p>
     </div>`;
 }
 function projectsPage(sel) {
   const cur = projects.find((p) => p.id === sel) || projects[0];
-  const list = projects.map((p) => `<li><button type="button" class="t-recipe" data-id="${p.id}" aria-pressed="${p === cur}">
+  const list = projects.map((p) => `${groupStart(p, "t-grp")}<li><button type="button" class="t-recipe" data-id="${p.id}" aria-pressed="${p === cur}">
       <span class="t-slot-s">${icon(p.icon)}</span><span style="color:${RARITY[p.status]}">${esc(p.name)}</span></button></li>`).join("");
   return chrome("projects", `<h1 class="t-h" tabindex="-1">Projects</h1>
     <div class="t-craft">

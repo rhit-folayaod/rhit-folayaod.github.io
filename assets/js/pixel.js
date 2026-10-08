@@ -135,13 +135,6 @@ const draw = {
     line(g, 10, 7, 12, 7, "#55606a");
     outline(g); return g;
   },
-  rack() {
-    const g = grid(16);
-    fill(g, (x, y) => x >= 3 && x <= 12 && y >= 1 && y <= 14, "#3a3f45");
-    for (const y of [3, 7, 11]) { line(g, 4, y, 11, y, "#5d6670"); line(g, 4, y + 1, 11, y + 1, "#4a5158"); set(g, 10, y, "#4cd964"); }
-    set(g, 10, 7, "#f5a623");
-    outline(g); return g;
-  },
   jetpack() {
     const g = grid(16);
     fill(g, (x, y) => (x >= 3 && x <= 6 || x >= 9 && x <= 12) && y >= 2 && y <= 10, "#d9542b");
@@ -366,6 +359,93 @@ const draw = {
     for (const [x, y] of [[4, 5], [9, 5], [6, 8], [4, 11], [9, 11]]) { set(g, x, y, "#c62828"); set(g, x + 1, y, "#c62828"); }
     // sparkle
     line(g, 14, 0, 14, 4, "#ffd84a"); line(g, 12, 2, 15, 2, "#ffd84a"); set(g, 14, 2, "#fff6c8");
+    outline(g); return g;
+  },
+  /* ---------- earlier projects ---------- */
+  branches() {
+    const g = grid(16);
+    line(g, 7, 3, 3, 8, "#cfd8dc"); line(g, 8, 3, 12, 8, "#cfd8dc");
+    line(g, 3, 9, 1, 12, "#cfd8dc"); line(g, 3, 9, 5, 12, "#cfd8dc"); line(g, 12, 9, 14, 12, "#cfd8dc");
+    for (const [x, y, c] of [[7, 1, "#4caf50"], [2, 7, "#42a5f5"], [11, 7, "#42a5f5"], [0, 12, "#ffca28"], [4, 12, "#ffca28"], [13, 12, "#ffca28"]]) fill(g, (a, b) => a >= x && a <= x + 1 && b >= y && b <= y + 1, c);
+    outline(g); return g;
+  },
+  cart() {
+    const g = grid(16);
+    line(g, 0, 3, 2, 3, "#90a4ae"); line(g, 2, 3, 4, 10, "#90a4ae");
+    fill(g, (x, y) => x >= 4 && x <= 13 && y >= 4 && y <= 8 && x - 4 >= (y - 4) * 0.2, "#e53935");
+    fill(g, (x, y) => x >= 5 && x <= 12 && y === 6, "#ef9a9a");
+    line(g, 4, 10, 13, 10, "#90a4ae");
+    fill(g, (x, y) => (x - 5.5) ** 2 + (y - 12.5) ** 2 <= 1.6 || (x - 11.5) ** 2 + (y - 12.5) ** 2 <= 1.6, "#37474f");
+    outline(g); return g;
+  },
+  magnifier() {
+    const g = grid(16);
+    const d = (x, y) => Math.hypot(x - 6, y - 6);
+    fill(g, (x, y) => d(x, y) <= 3.4, "#b3e5fc");
+    fill(g, (x, y) => d(x, y) <= 5 && d(x, y) > 3.4, "#78909c");
+    set(g, 4, 4, "#ffffff"); set(g, 5, 4, "#ffffff");
+    line(g, 10, 10, 14, 14, "#6d4c41"); line(g, 10, 11, 13, 14, "#4e342e"); line(g, 11, 10, 14, 13, "#8d6e63");
+    outline(g); return g;
+  },
+  rocket() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 5 && x <= 10 && y >= 3 && y <= 11 && !(y === 3 && (x === 5 || x === 10)), "#eceff1");
+    fill(g, (x, y) => x >= 6 && x <= 9 && y >= 1 && y <= 2 && !(y === 1 && (x === 6 || x === 9)), "#e53935");
+    fill(g, (x, y) => (x - 7.5) ** 2 + (y - 6) ** 2 <= 1.6, "#29b6f6");
+    fill(g, (x, y) => (x === 4 || x === 11) && y >= 9 && y <= 11, "#e53935");
+    rows(g, 6, 12, ["####", ".##."], { "#": "#ff9800" }); set(g, 7, 14, "#ffeb3b"); set(g, 8, 14, "#ffeb3b");
+    outline(g); return g;
+  },
+  hex() {
+    const g = grid(16);
+    const inHex = (x, y, cx, cy, r) => { const dx = Math.abs(x - cx), dy = Math.abs(y - cy); return dy <= r && dx <= r * 0.9 - dy * 0.45 + 0.5; };
+    fill(g, (x, y) => inHex(x, y, 7.5, 7.5, 6.5), "#c8a165");
+    fill(g, (x, y) => inHex(x, y, 7.5, 7.5, 6.5) && y < 6, "#7cb342");
+    fill(g, (x, y) => inHex(x, y, 7.5, 7.5, 6.5) && y > 9, "#8d6e63");
+    fill(g, (x, y) => (x - 7.5) ** 2 + (y - 7.5) ** 2 <= 2.2, "#f5f0e1");
+    outline(g); return g;
+  },
+  stack() {
+    const g = grid(16);
+    for (const [y, c, d] of [[2, "#ab47bc", "#7b1fa2"], [6, "#26a69a", "#00796b"], [10, "#ffa726", "#ef6c00"]]) {
+      fill(g, (x, yy) => x >= 2 && x <= 13 && yy >= y && yy <= y + 2, c);
+      fill(g, (x, yy) => x >= 2 && x <= 13 && yy === y + 2, d);
+    }
+    outline(g); return g;
+  },
+  /* ---------- three more desktop games ---------- */
+  brick() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 1 && x <= 14 && y >= 5 && y <= 13, "#d32f2f");
+    fill(g, (x, y) => x >= 1 && x <= 14 && y >= 11 && y <= 13, "#9a1f1f");
+    fill(g, (x, y) => x === 14 && y >= 5 && y <= 13, "#9a1f1f");
+    for (const cx of [4, 11]) {
+      fill(g, (x, y) => x >= cx - 2 && x <= cx + 1 && y >= 2 && y <= 4, "#e53935");
+      fill(g, (x, y) => x >= cx - 2 && x <= cx + 1 && y === 2, "#ff8a80");
+    }
+    set(g, 2, 6, "#ff8a80"); set(g, 3, 6, "#ff8a80");
+    outline(g); return g;
+  },
+  townhall() {
+    const g = grid(16);
+    fill(g, (x, y) => y >= 13 && y <= 14 && x >= 1 && x <= 14, "#9e9e9e");
+    fill(g, (x, y) => x >= 3 && x <= 12 && y >= 7 && y <= 12, "#bcaaa4");
+    fill(g, (x, y) => x >= 3 && x <= 12 && y >= 7 && y <= 12 && (x + y * 3) % 5 === 0, "#a1887f");
+    fill(g, (x, y) => y >= 3 && y <= 6 && Math.abs(x - 7.5) <= 7 - (6 - y) * 1.6 && x >= 1 && x <= 14, "#1e88e5");
+    fill(g, (x, y) => y === 6 && x >= 2 && x <= 13, "#1565c0");
+    fill(g, (x, y) => x >= 6 && x <= 9 && y >= 9 && y <= 12, "#5d4037");
+    line(g, 7, 0, 7, 2, "#6d4c41"); fill(g, (x, y) => x >= 8 && x <= 10 && y >= 0 && y <= 1, "#fdd835");
+    outline(g); return g;
+  },
+  joystick() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 1 && x <= 14 && y >= 10 && y <= 14, "#212121");
+    fill(g, (x, y) => x >= 1 && x <= 14 && y === 10, "#424242");
+    line(g, 5, 4, 5, 10, "#9e9e9e"); line(g, 6, 4, 6, 10, "#757575");
+    fill(g, (x, y) => (x - 5.5) ** 2 + (y - 3) ** 2 <= 5, "#e53935");
+    set(g, 4, 2, "#ff8a80");
+    fill(g, (x, y) => (x - 10) ** 2 + (y - 12) ** 2 <= 1.2, "#fdd835");
+    fill(g, (x, y) => (x - 13) ** 2 + (y - 12) ** 2 <= 1.2, "#29b6f6");
     outline(g); return g;
   },
   monogram() {
