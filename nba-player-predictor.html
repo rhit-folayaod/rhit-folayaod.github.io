@@ -2,61 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NBA Player Predictor - Timi Folayan</title>
-<meta name="description" content="NBA Player Predictor - a project by Timi Folayan.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<title>Moved | Timi Folayan</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=./#/projects/nba-player-predictor">
+<link rel="canonical" href="https://rhit-folayaod.github.io/">
 </head>
 <body>
-
-<!-- decorative circuit-grid background -->
-<div class="grid-overlay" aria-hidden="true"></div>
-
-<!-- side nav / instrument panel -->
-<nav class="panel" aria-label="Section navigation">
-  <a href="index.html" class="panel-brand"><span class="dot dot-live"></span>gloryboy.</a>
-  <ul class="panel-list">
-    <li><a href="index.html#about" data-section="about"><span class="led"></span><span class="panel-label">about</span></a></li>
-    <li><a href="index.html#education" data-section="education"><span class="led"></span><span class="panel-label">education</span></a></li>
-    <li><a href="index.html#experience" data-section="experience"><span class="led"></span><span class="panel-label">experience</span></a></li>
-    <li><a href="index.html#projects" data-section="projects"><span class="led"></span><span class="panel-label">projects</span></a></li>
-    <li><a href="index.html#skills" data-section="skills"><span class="led"></span><span class="panel-label">skills</span></a></li>
-    <li><a href="index.html#leadership" data-section="leadership"><span class="led"></span><span class="panel-label">leadership</span></a></li>
-    <li><a href="index.html#contact" data-section="contact"><span class="led"></span><span class="panel-label">contact</span></a></li>
-  </ul>
-  <a class="panel-resume" href="Resume.pdf" target="_blank" rel="noopener" download>↓ resume.pdf</a>
-</nav>
-
-<main>
-
-  <section class="detail-section" id="top">
-    <a href="index.html#projects" class="mono back-link">← back to projects</a>
-    <h1 class="detail-title">NBA Player Predictor</h1>
-    <p class="mono card-eyebrow detail-eyebrow">PYTHON · FASTAPI · ML · K8S</p>
-    <div class="about-text">
-      <p>A backend web application predicting an NBA player's next-game point total against a specific opponent, built as a full production ML system rather than just a notebook.</p>
-      <p>Trained a RandomForestRegressor on real player/team IDs pulled from PostgreSQL, engineering average-based features (player scoring average, opponent points allowed, team scoring average) so the model could reason about matchups instead of treating IDs as opaque categories.</p>
-      <p>Tracked 10 experiment runs in MLflow (varying tree count, depth, and test split) and promoted the lowest-MAE run to the MLflow Model Registry under a production alias.</p>
-      <p>The trained model is served from its own containerized service (separate from the API, so it can scale and redeploy independently), and the whole system ships via a CI/CD pipeline on GitHub Actions - tests and migrations run on every push, QA deploys automatically to a GKE cluster, and production deploys require manual approval through a GitHub Environment gate.</p>
-    </div>
-    <div class="skills-grid detail-stack">
-      <div class="skill-group">
-        <p class="mono skill-label">tech stack</p>
-        <p>Python · FastAPI · PostgreSQL · scikit-learn (RandomForestRegressor) · MLflow (tracking + Model Registry) · Docker · Kubernetes (GKE) · GitHub Actions (CI/CD)</p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer mono">
-  <span id="clock"></span>
-  <span>built with html · css · js - no framework</span>
-</footer>
-
-<script src="script.js"></script>
+<p>This page moved. <a href="./#/projects/nba-player-predictor">Continue to the portfolio</a>.</p>
+<script>location.replace("./#/projects/nba-player-predictor");</script>
 </body>
 </html>

@@ -3,360 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Timi Folayan - Software Engineer</title>
-<meta name="description" content="Portfolio of Timi Folayan, a software engineer bridging hardware and code.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<title>Timi Folayan | Software Engineering @ Rose-Hulman</title>
+<meta name="description" content="Timi Folayan: Software Engineering student at Rose-Hulman (May 2027). Experience at Emerson (NI) and Rose-Hulman Ventures, MCP servers for NI hardware, and LinkedLife.">
+<meta property="og:title" content="Timi Folayan | Portfolio">
+<meta property="og:description" content="Software Engineering @ Rose-Hulman, May 2027. Experience, projects, and skills.">
+<meta property="og:url" content="https://rhit-folayaod.github.io/">
+<meta name="theme-color" content="#1b1b1b">
+<link rel="preload" href="assets/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4' shape-rendering='crispEdges'%3E%3Crect width='4' height='4' fill='%23777'/%3E%3Crect x='1' y='1' width='2' height='1' fill='%23ccc'/%3E%3Crect y='3' width='4' height='1' fill='%23444'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
+<body data-screen="title">
+<div class="bg" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- decorative circuit-grid background -->
-<div class="grid-overlay" aria-hidden="true"></div>
-
-<!-- side nav / instrument panel -->
-<nav class="panel" aria-label="Section navigation">
-  <div class="panel-brand"><span class="dot dot-live"></span>gloryboy.</div>
-  <ul class="panel-list">
-    <li><a href="#about" data-section="about"><span class="led"></span><span class="panel-label">about</span></a></li>
-    <li><a href="#education" data-section="education"><span class="led"></span><span class="panel-label">education</span></a></li>
-    <li><a href="#experience" data-section="experience"><span class="led"></span><span class="panel-label">experience</span></a></li>
-    <li><a href="#projects" data-section="projects"><span class="led"></span><span class="panel-label">projects</span></a></li>
-    <li><a href="#skills" data-section="skills"><span class="led"></span><span class="panel-label">skills</span></a></li>
-    <li><a href="#leadership" data-section="leadership"><span class="led"></span><span class="panel-label">leadership</span></a></li>
-    <li><a href="#contact" data-section="contact"><span class="led"></span><span class="panel-label">contact</span></a></li>
-  </ul>
-  <a class="panel-resume" href="Resume.pdf" target="_blank" rel="noopener" download>↓ resume.pdf</a>
-</nav>
-
-<main>
-
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <p class="mono eyebrow"><span class="prompt">timi@portfolio:~$</span> <span id="typed"></span><span class="cursor">▌</span></p>
-    <h1 class="hero-title">Timi <span class="hero-lastname">Folayan</span></h1>
-    <p class="hero-sub">Software Engineer with a measurement-systems streak - I write code, but I've also spent a summer explaining data acquisition hardware to people who need to trust it.</p>
-    <p class="hero-role mono">Software Engineering @ Rose-Hulman '27 &nbsp;·&nbsp; Former SDE Intern @ Emerson (NI), Austin TX</p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary">View projects</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
-    </div>
-    <div class="scope-trace" aria-hidden="true">
-      <svg viewBox="0 0 600 60" preserveAspectRatio="none">
-        <polyline points="0,30 60,30 90,10 120,50 150,30 210,30 240,45 270,15 300,30 360,30 390,20 420,40 450,30 600,30" />
-      </svg>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <h2 class="section-head"><span class="mono tag">01</span> About</h2>
-    <div class="section-body about-body">
-      <img class="about-photo" src="headshot.jpg" alt="Timi Folayan" width="140" height="140">
-      <div class="about-text">
-        <p>I'm a Software Engineering student at Rose-Hulman Institute of Technology (minoring in Geography), graduating May 2027. At RHV I was the sole software engineer on a multidisciplinary team building the software behind a gas valve calibration system. I then completed a Sales Development Engineering internship at Emerson (NI) in Austin: opportunity pipeline work, live MioDAQ demos, and translating measurement systems for people who have to trust them. That mix is what I'm building toward: solid software, and clear technical communication.</p>
-        <p>Outside of internships and coursework, I TA for a formal methods course, work as a Learning Advisor helping 6th-12th graders with STEM homework, and I'm an avid music enjoyer/creator, content creator, gamer, and fly guy.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section" id="education">
-    <h2 class="section-head"><span class="mono tag">02</span> Education</h2>
-    <div class="timeline">
-      <svg class="timeline-trace" viewBox="0 0 40 400" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M20,0 L20,180 L8,200 L8,380 L20,400" />
-      </svg>
-
-      <article class="tl-item">
-        <div class="tl-node tl-node-live"></div>
-        <div class="tl-card">
-          <p class="mono tl-date">Expected May 2027</p>
-          <h3>B.S. Software Engineering, Geography Minor</h3>
-          <p class="tl-org">Rose-Hulman Institute of Technology · Terre Haute, IN</p>
-          <p>Coursework includes Object-Oriented Development, Operating Systems, Web Development, Data Structures &amp; Algorithms, Digital Systems, Databases, Formal Methods, Practical Security, Software Design, Software Architecture, Software Project Management, Software Requirements, and Software Quality Assurance.</p>
-        </div>
-      </article>
-
-      <article class="tl-item">
-        <div class="tl-node"></div>
-        <div class="tl-card">
-          <p class="mono tl-date">Aug 2022 - Apr 2023</p>
-          <h3>B.S. Computer Engineering</h3>
-          <p class="tl-org">Michigan Technological University · Houghton, MI</p>
-          <p>Relevant coursework: Intro to Programming I, Spatial Visualization, and Engineering Analysis. Transferred to Rose-Hulman Institute of Technology after the first year.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <h2 class="section-head"><span class="mono tag">03</span> Experience</h2>
-    <div class="timeline">
-      <svg class="timeline-trace" viewBox="0 0 40 1100" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M20,0 L20,180 L8,200 L8,380 L20,400 L20,580 L8,600 L8,780 L20,800 L20,980 L8,1000 L8,1100" />
-      </svg>
-
-      <article class="tl-item">
-        <div class="tl-node"></div>
-        <div class="tl-card">
-          <p class="mono tl-date">Summer 2026</p>
-          <h3>Sales Development Engineering Intern</h3>
-          <p class="tl-org">Emerson (NI) · Austin, TX</p>
-          <p>Built an opportunity pipeline from inbound demand and proposed tailored hardware/software solutions, generating over $1,600,000 in individual opportunity dollars. Led live MioDAQ demos at a company-wide Tech Expo, translating data-acquisition concepts into customer value. Built and documented internal projects that showcased NI hardware/software for community outreach. Used LinkedIn Sales Navigator for account intelligence and prospect qualification alongside sales engineers.</p>
-        </div>
-      </article>
-
-      <article class="tl-item">
-        <div class="tl-node"></div>
-        <div class="tl-card">
-          <p class="mono tl-date">Summer 2025</p>
-          <h3>Software Engineer Intern</h3>
-          <p class="tl-org">RHV - Gas Valve Calibration System · Terre Haute, IN</p>
-          <p>Sole software engineer on a multidisciplinary team of electrical, computer, and mechanical engineers, leading the full software stack. Built a responsive, multithreaded C# WinForms application as the central interface between mechanical and electrical systems, with real-time UI monitoring six simultaneous test units. Implemented Modbus TCP/IP and serial communication to control PLCs and programmable power supplies. Supported calibration of over 1,000,000 gas valves with minimal operator intervention.</p>
-        </div>
-      </article>
-
-      <article class="tl-item">
-        <div class="tl-node"></div>
-        <div class="tl-card">
-          <p class="mono tl-date">Spring 2026</p>
-          <h3>Teaching Assistant, Formal Methods</h3>
-          <p class="tl-org">Rose-Hulman Institute of Technology</p>
-          <p>Supported undergraduates in mastering formal methods - logic, specifications, and program correctness. Graded assignments and gave detailed feedback on formal proofs and model-based designs, and maintained the automated grading pipeline, including tracking down a mismatched build-output path that was silently failing an entire lab's submissions.</p>
-        </div>
-      </article>
-
-      <article class="tl-item">
-        <div class="tl-node tl-node-live"></div>
-        <div class="tl-card">
-          <p class="mono tl-date">Winter 2024 - Present</p>
-          <h3>Learning Advisor</h3>
-          <p class="tl-org">Ask Rose · Terre Haute, IN</p>
-          <p>Help students in grades 6-12 with STEM homework across math, physics, and computer science - 99% student satisfaction rate. Guide students through problem-solving techniques rather than just answers, with 80% reporting increased confidence.</p>
-        </div>
-      </article>
-
-      <article class="tl-item">
-        <div class="tl-node"></div>
-        <div class="tl-card">
-          <p class="mono tl-date">Spring 2022</p>
-          <h3>Crewmember, Dell Tech Team</h3>
-          <p class="tl-org">Dell Tech Team · WCHS, Lebanon, TN</p>
-          <p>Used problem-solving skills to troubleshoot malfunctioning Chromebooks and repaired screens, batteries, and chargers, earning a certification through the program. Worked as part of a team to keep the school's Chromebook fleet fixed efficiently and effectively.</p>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section" id="projects">
-    <h2 class="section-head"><span class="mono tag">04</span> Projects</h2>
-    <div class="card-grid">
-
-      <article class="card card-live">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow"><span class="dot dot-live"></span>PYTHON · MCP · NI</p>
-        <h3>DAQ MCP Server</h3>
-        <p>An MCP server that lets AI coding clients like Cursor reach past the editor and into physical NI DAQ hardware - discover, read, and write channels through structured tools instead of ad-hoc scripts. A 5-layer safety model (writes off by default, channel allowlists, direction enforcement, analog-output clamping, digital write read-back) shared by agent tools and the live dashboard. The same tool surface runs fully simulated with no NI hardware, or against a real NI-DAQmx driver, and streams live acquisition to a Starlette/SSE dashboard.</p>
-        <div class="card-links">
-          <a href="daq-mcp.html" class="mono">view project →</a>
-          <a href="https://github.com/rhit-folayaod/daq-mcp" class="mono" target="_blank" rel="noopener">view repo →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">PYTHON · FASTAPI · ML · K8S</p>
-        <h3>NBA Player Predictor</h3>
-        <p>A backend web application predicting an NBA player's next-game point total against a specific opponent, built as a full production ML system rather than just a notebook. Trained a RandomForestRegressor on real player and team data from PostgreSQL, engineering matchup-aware features like scoring averages and opponent points allowed, then tracked 10 experiment runs in MLflow and promoted the best one to the Model Registry. The trained model runs as its own containerized service, deployed through a GitHub Actions CI/CD pipeline that auto-ships to a GKE QA cluster and gates production behind manual approval.</p>
-        <div class="card-links">
-          <a href="nba-player-predictor.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">PYTHON · FASTAPI · LATEX</p>
-        <h3>Resume Tailor</h3>
-        <p>A web app and CLI that ranks pre-written resume bullets against a job posting and compiles a tailored PDF with LaTeX. The pipeline cannot fabricate resume content - an optional LLM rerank can only reorder existing bullet IDs, never generate new bullet text. FastAPI plus Supabase Auth/Postgres, with OpenAI used for structured job-post extraction. Hosted deploy on Fly.io is currently paused.</p>
-        <div class="card-links">
-          <a href="resume-tailor.html" class="mono">view project →</a>
-          <a href="https://github.com/rhit-folayaod/ai-resume-tailor" class="mono" target="_blank" rel="noopener">view repo →</a>
-        </div>
-      </article>
-
-      <article class="card card-live">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow"><span class="dot dot-live"></span>TYPESCRIPT · REACT · VITE · ZUSTAND</p>
-        <h3>LinkedLife</h3>
-        <p>A satirical corporate life-sim in the browser across ~97 TypeScript modules: cold-message strangers, hold conversations, sit interviews, and climb a career ladder. A local classifier owns all game consequences; an LLM, if present, only writes flavor text. Deterministic and seeded, fully playable with zero API calls. 470+ automated tests include headless bot playthroughs over thousands of turns.</p>
-        <div class="card-links">
-          <a href="linkedlife.html" class="mono">view project →</a>
-          <a href="https://www.linked-life.com" class="mono" target="_blank" rel="noopener">try it →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">PYTHON · PYGAME · NI</p>
-        <h3>Two-Player Jetpack Joyride</h3>
-        <p>A two-player split-screen endless flyer in pygame, played on physical buttons wired into an NI mioDAQ, with keyboard fallback so it runs without hardware. Self-initiated during my Emerson/NI internship - the point was driving a real game loop off live digital I/O rather than a plot window. Both players race the same seeded course while a background thread keeps DAQ reads off the 60fps render path.</p>
-        <div class="card-links">
-          <a href="jetpack-joyride.html" class="mono">view project →</a>
-          <a href="https://github.com/rhit-folayaod/MioDAQ-Powered-Jetpack-Joyride" class="mono" target="_blank" rel="noopener">view repo →</a>
-        </div>
-      </article>
-
-      <article class="card card-live">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow"><span class="dot dot-live"></span>PYTHON · ONGOING</p>
-        <h3>DSA From Scratch</h3>
-        <p>A structured, self-directed rebuild of my data-structures fundamentals: plain-English approach before code, a 25-35 minute struggle timer, and cold re-solves the next day. Building real pattern recognition in hashmaps and two-pointer problems.</p>
-        <div class="card-links">
-          <a href="dsa-from-scratch.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">JAVA · ECLIPSE IDE</p>
-        <h3>Editor Trees</h3>
-        <p>Designed and implemented a complex custom data structure from its theoretical foundations up, with algorithms planned out before implementation rather than written ad hoc. Built collaboratively, with a focus on getting the underlying theory right first.</p>
-        <div class="card-links">
-          <a href="editor-trees.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">SQL · JAVA · SQL SERVER</p>
-        <h3>Lost and Found Database</h3>
-        <p>A lost-and-found application on Microsoft SQL Server with a Java UI for admins and users. Applied object-oriented design and Java-SQL connectivity for a maintainable system.</p>
-        <div class="card-links">
-          <a href="lost-and-found.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">JAVA · MAVEN</p>
-        <h3>Settlers of Catan</h3>
-        <p>A multi-package Java implementation of Catan. Untangled classpath issues and internationalization resource-bundle loading across a fresh build environment - the kind of bug that only shows up when the project structure gets real.</p>
-        <div class="card-links">
-          <a href="settlers-of-catan.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">HTML · CSS · JAVASCRIPT</p>
-        <h3>Online Sports Webstore</h3>
-        <p>An online web store built from scratch with a responsive HTML/CSS/JavaScript interface. Implemented CRUD for product management and order processing, and pair-programmed real-time product and order-tracking features with a teammate.</p>
-        <div class="card-links">
-          <a href="online-sports-webstore.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-corner tl"></div><div class="card-corner tr"></div>
-        <div class="card-corner bl"></div><div class="card-corner br"></div>
-        <p class="mono card-eyebrow">HARDWARE · NI</p>
-        <h3>MioDAQ - Tech Expo</h3>
-        <p>Presented Emerson's MioDAQ data-acquisition hardware at an internal Tech Expo, closing the gap between my software background and measurement-systems fundamentals well enough to explain it to a room of engineers.</p>
-        <div class="card-links">
-          <a href="miodaq.html" class="mono">view project →</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="section" id="skills">
-    <h2 class="section-head"><span class="mono tag">05</span> Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <p class="mono skill-label">languages</p>
-        <p>Python · Java · SQL · C# · TypeScript · JavaScript · HTML/CSS · C · C++</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label">ai &amp; agent tooling</p>
-        <p>MCP · FastMCP · OpenAI API · Cursor · Claude Code · Claude API · Grok Bot</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label">frameworks</p>
-        <p>React · Next.js · Vite · Zustand · Tailwind CSS · FastAPI · Pydantic · scikit-learn</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label">data &amp; infra</p>
-        <p>PostgreSQL · MS SQL Server · Supabase · Docker · Kubernetes · MLflow · GitHub Actions · Fly.io · Vercel</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label">tools</p>
-        <p>Git · VS Code · IntelliJ · Eclipse · NI-DAQmx · pytest · Vitest · uv · Playwright</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label">hardware / lab</p>
-        <p>NI-DAQmx · Modbus TCP/IP · Arduino · Quartus · ModelSim</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- LEADERSHIP -->
-  <section class="section" id="leadership">
-    <h2 class="section-head"><span class="mono tag">06</span> Leadership</h2>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <p class="mono skill-label"><span class="dot dot-live dot-inline"></span>2024 - present</p>
-        <p><strong>Vice President</strong>, African Student Union</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label"><span class="dot dot-live dot-inline"></span>2024 - present</p>
-        <p><strong>Member</strong>, National Society of Black Engineers (Former PR Chair)</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label"><span class="dot dot-live dot-inline"></span>2023 - present</p>
-        <p><strong>Member</strong>, ColorStack</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-label"><span class="dot dot-live dot-inline"></span>2023 - present</p>
-        <p><strong>Member</strong>, Linux Users Group &amp; Computer Security Club</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section section-contact" id="contact">
-    <h2 class="section-head"><span class="mono tag">07</span> Contact</h2>
-    <p class="contact-lead">Open to full-time SWE and solutions engineering roles starting May 2027 - and happy to talk shop before then.</p>
-    <div class="contact-links">
-      <a href="mailto:folayaod@rose-hulman.edu" class="btn btn-primary">folayaod@rose-hulman.edu</a>
-      <a href="https://linkedin.com/in/timifolayan" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/rhit-folayaod" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </section>
-
-  <footer class="footer mono">
-    <span id="clock"></span>
-    <span>built with html · css · js - no framework</span>
-  </footer>
-
+<main id="main" tabindex="-1">
+  <noscript>
+    <section class="screen screen-noscript">
+      <h1>Timi Folayan</h1>
+      <p>Software Engineering @ Rose-Hulman, May 2027. This site needs JavaScript for its menus.</p>
+      <p><a href="Resume.pdf">Resume (PDF)</a> · <a href="https://github.com/rhit-folayaod">GitHub</a> · <a href="https://www.linkedin.com/in/timifolayan">LinkedIn</a> · <a href="mailto:folayaod@rose-hulman.edu">folayaod@rose-hulman.edu</a></p>
+    </section>
+  </noscript>
 </main>
 
-<script src="script.js"></script>
+<div class="corner corner-left">
+  <button type="button" class="mc-btn mc-square" id="mute" aria-pressed="false" aria-label="Click sounds off. Turn on"></button>
+  <button type="button" class="mc-btn mc-square" id="settings" aria-haspopup="dialog" aria-label="Settings"></button>
+  <span class="version">Portfolio v1.0</span>
+</div>
+
+<dialog id="settings-dialog" class="mc-dialog" aria-labelledby="settings-title">
+  <h2 id="settings-title">Options</h2>
+  <div class="opt-list">
+    <button type="button" class="mc-btn" data-opt="sound"></button>
+    <button type="button" class="mc-btn" data-opt="motion"></button>
+  </div>
+  <form method="dialog"><button class="mc-btn" value="done">Done</button></form>
+</dialog>
+
+<script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
