@@ -1,4 +1,4 @@
-// "Arcade Clash": a 90s arcade fighting-game homage with no fighters drawn.
+// "Arcade Brawl": a 90s arcade fighting-game homage with no fighters drawn.
 // Projects are the character-select grid (picking one plays a VS splash),
 // experience is the arcade ladder, skills are a move list with stat bars, and
 // About is the player profile card. Stat bars count real uses in data.js.
@@ -26,7 +26,7 @@ function chrome(pg, body) {
       <span class="x-clock" aria-hidden="true">&infin;</span>
       <div class="x-hp p2"><i aria-hidden="true"></i><b>${pg ? NAMES[pg].toUpperCase() : "INSERT COIN"}</b><span class="x-tag">2P</span></div>
     </header>
-    <nav class="x-nav" aria-label="Arcade Clash">${pg ? `<a class="x-navbtn" href="${R()}" data-back>&#9664; Title</a>` : ""}<a class="x-navbtn" href="#/" ${pg ? "" : "data-back"}>Exit to desktop</a></nav>
+    <nav class="x-nav" aria-label="Arcade Brawl">${pg ? `<a class="x-navbtn" href="${R()}" data-back>&#9664; Title</a>` : ""}<a class="x-navbtn" href="#/" ${pg ? "" : "data-back"}>Exit to desktop</a></nav>
     <div class="x-stage">${body}</div>
     <footer class="x-foot"><p>${DISCLAIMER}</p></footer>
   </div>`;
@@ -39,7 +39,7 @@ function title() {
   const items = MENU.map((m) => `<li><a class="x-menu-item" href="${R(m.id)}"><span>${m.label}</span><small>${m.sub}</small></a></li>`).join("");
   return chrome("", `<div class="x-title">
       <p class="x-kicker">${esc(about.name)} presents</p>
-      <h1 class="x-logo" tabindex="-1"><span>Arcade</span><span>Clash</span></h1>
+      <h1 class="x-logo" tabindex="-1"><span>Arcade</span><span>Brawl</span></h1>
       <p class="x-sub">Software Engineering &middot; Rose-Hulman &middot; May 2027</p>
       <nav aria-label="Main menu"><ul class="x-menu">${items}</ul></nav>
       <p class="x-press" aria-hidden="true">Press start</p>
@@ -216,7 +216,7 @@ function render([pg = "", sub]) {
   return {
     html: v ? v[0]() : title(),
     wire: v ? v[1] : wireTitle,
-    title: v ? `${NAMES[pg]} | Arcade Clash | Timi Folayan` : "Arcade Clash | Timi Folayan",
+    title: v ? `${NAMES[pg]} | Arcade Brawl | Timi Folayan` : "Arcade Brawl | Timi Folayan",
     screen: v ? pg : "title",
   };
 }

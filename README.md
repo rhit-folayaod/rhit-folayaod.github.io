@@ -11,7 +11,7 @@ Timi Folayan's portfolio. It opens on a late-90s style desktop; each game icon o
 | Battle Royale Lobby | battle pass tiers, item shop, locker | `#/fortnite/...` |
 | Brick Hub | experience cards with Play, Studio-style Explorer + Properties for projects, badge grid, chat-bubble About | `#/roblox/...` |
 | Village Clash | top-down village: Town Hall is About, Barracks is Experience, Builder's Workshop is Projects, Laboratory is Skills | `#/clash/...` |
-| Arcade Clash | character select with a VS splash for projects, arcade ladder, move list with stat bars, player profile | `#/fighter/...` |
+| Arcade Brawl | character select with a VS splash for projects, arcade ladder, move list with stat bars, player profile | `#/fighter/...` |
 
 Every theme has `/experience`, `/projects[/<id>]`, `/skills`, `/about`. Old links (`#/projects`, `#about`, `daq-mcp.html`, ...) land in Block Craft.
 

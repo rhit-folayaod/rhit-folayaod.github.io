@@ -414,16 +414,27 @@ const draw = {
     outline(g); return g;
   },
   /* ---------- three more desktop games ---------- */
-  brick() {
+  block() {
+    // A smooth block turned on its corner: lit top, two shaded sides, no studs.
     const g = grid(16);
-    fill(g, (x, y) => x >= 1 && x <= 14 && y >= 5 && y <= 13, "#d32f2f");
-    fill(g, (x, y) => x >= 1 && x <= 14 && y >= 11 && y <= 13, "#9a1f1f");
-    fill(g, (x, y) => x === 14 && y >= 5 && y <= 13, "#9a1f1f");
-    for (const cx of [4, 11]) {
-      fill(g, (x, y) => x >= cx - 2 && x <= cx + 1 && y >= 2 && y <= 4, "#e53935");
-      fill(g, (x, y) => x >= cx - 2 && x <= cx + 1 && y === 2, "#ff8a80");
-    }
-    set(g, 2, 6, "#ff8a80"); set(g, 3, 6, "#ff8a80");
+    rows(g, 1, 0, [
+      "......hh......",
+      "....hTTTTh....",
+      "..hTTTTTTTTh..",
+      "hTTTTTTTTTTTTh",
+      "LLTTTTTTTTTTRR",
+      "LLLLTTTTTTRRRR",
+      "LLLLLLTTRRRRRR",
+      "LLLLLLLRRRRRRR",
+      "LLLLLLLRRRRRRR",
+      "LLLLLLLRRRRRRR",
+      "LLLLLLLRRRRRRR",
+      "LLLLLLLRRRRRRR",
+      "LLLLLLLRRRRRRR",
+      "..LLLLLRRRRR..",
+      "....LLLRRR....",
+      "......LR......",
+    ], { h: "#ff8a80", T: "#ef5350", L: "#c62828", R: "#8e1b1b" });
     outline(g); return g;
   },
   townhall() {

@@ -10,6 +10,8 @@ test("desktop: one click on a game icon boots it, and the game can quit back", a
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Welcome.exe" })).toBeVisible();
   await expect(page.getByText(DISCLAIMER)).toBeVisible();
+  for (const name of ["Brick Hub", "Village Clash", "Arcade Brawl"]) await expect(page.getByRole("button", { name })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Arcade Brawl" })).toHaveAttribute("title", "Street Fighter-style");
   await page.getByRole("button", { name: "Block Craft" }).click();
   await expect(page.getByRole("progressbar", { name: "Loading Block Craft" })).toBeVisible();
   await expect(page.getByRole("img", { name: "Timi Folayan Portfolio" })).toBeVisible();
@@ -124,7 +126,9 @@ test("older projects come after the current ones, and the new themes open them",
   await page.getByRole("button", { name: /Lost and Found Database/ }).click();
   await expect(page.locator("#v-pd")).toContainText("Microsoft SQL Server");
 
-  // Arcade Clash: picking a project from the select screen loads its card.
+  // Arcade Brawl: picking a project from the select screen loads its card.
+  await page.goto("/#/fighter");
+  await expect(page).toHaveTitle("Arcade Brawl | Timi Folayan");
   await page.goto("/#/fighter/projects");
   await page.getByRole("button", { name: "Editor Trees" }).click();
   await expect(page.locator("#x-bio")).toContainText("Summer 2024");

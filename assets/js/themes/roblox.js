@@ -14,7 +14,7 @@ const NAV = [
   { id: "skills", label: "Badges" },
   { id: "about", label: "Chat" },
 ];
-// Each job's thumbnail is a little brick build in one color.
+// Each job's thumbnail is a little build of smooth blocks in one color.
 const THUMB = ["#2f7de1", "#7a4fd6", "#e0662f", "#2fb36b", "#d6a92f"];
 const BADGE = ["#2f7de1", "#2fb36b", "#e0662f", "#7a4fd6", "#d6a92f"];
 
@@ -22,7 +22,7 @@ function chrome(pg, body) {
   const nav = NAV.map((n) => `<li><a class="b-nav" href="${R(n.id)}" ${n.id === pg ? 'aria-current="page"' : ""} ${pg && !n.id ? "data-back" : ""}>${n.label}</a></li>`).join("");
   return `<div class="b b-pg-${pg || "home"}">
     <header class="b-top">
-      <a class="b-brand" href="${R()}"><span class="b-brand-ico">${icon("brick")}</span>Brick Hub</a>
+      <a class="b-brand" href="${R()}"><span class="b-brand-ico">${icon("block")}</span>Brick Hub</a>
       <nav aria-label="Brick Hub"><ul class="b-navs">${nav}</ul></nav>
       <a class="b-exit" href="#/" ${pg ? "" : "data-back"}>Exit to desktop</a>
     </header>
@@ -31,7 +31,7 @@ function chrome(pg, body) {
   </div>`;
 }
 const tags = (t) => `<ul class="b-tags">${t.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
-// A tiny build: a baseplate with a few bricks stacked by index, so every card differs.
+// A tiny build: a grid floor with a few smooth blocks stacked by index, so every card differs.
 function build(color, seed) {
   const bricks = [0, 1, 2, 3].map((k) => {
     const w = 2 + ((seed + k * 3) % 3), x = (seed * 5 + k * 7) % (12 - w), y = 3 - k;

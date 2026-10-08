@@ -17,9 +17,9 @@ export const THEMES = [
   { id: "minecraft", name: "Block Craft", style: "Minecraft-style", icon: "grass" },
   { id: "sonic", name: "Blue Blur Zone", style: "Sonic-style", icon: "ring" },
   { id: "fortnite", name: "Battle Royale Lobby", style: "Fortnite-style", icon: "crate" },
-  { id: "roblox", name: "Brick Hub", style: "Roblox-style", icon: "brick" },
+  { id: "roblox", name: "Brick Hub", style: "Roblox-style", icon: "block" },
   { id: "clash", name: "Village Clash", style: "Clash of Clans-style", icon: "townhall" },
-  { id: "fighter", name: "Arcade Clash", style: "Street Fighter-style", icon: "joystick" },
+  { id: "fighter", name: "Arcade Brawl", style: "Street Fighter-style", icon: "joystick" },
 ];
 export const themeById = (id) => THEMES.find((t) => t.id === id);
 
