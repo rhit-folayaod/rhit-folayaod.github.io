@@ -1,0 +1,13 @@
+{
+  "name": "rhit-folayaod.github.io",
+  "private": true,
+  "description": "Static portfolio. No build step; npm is only for the Playwright checks.",
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "test:e2e": "playwright test",
+    "art": "python3 tools/gen_art.py && node tools/gen-wordmark.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0"
+  }
+}

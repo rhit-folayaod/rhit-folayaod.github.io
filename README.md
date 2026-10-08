@@ -1,58 +1,33 @@
-# Portfolio site
+# rhit-folayaod.github.io
 
-Plain HTML/CSS/JS — no build step, no dependencies. Just three files: `index.html`, `styles.css`, `script.js`.
+Timi Folayan's portfolio, laid out like a block-game title screen: stone menu buttons, a world-select list for projects, and an enchanting table for skills.
 
-## Before you push this live
+Static HTML/CSS/JS served straight from `main` by GitHub Pages. No build step.
 
-Search the files for these placeholders and fill in your real info:
+## Layout
 
-- `[Last Name]` in `index.html` (hero title)
-- `your.email@example.com` — contact section and mailto link
-- `linkedin.com/in/yourhandle` and `github.com/yourhandle`
-- The `href="#"` links on each project card — point these at real repos
-- `resume.pdf` — drop your actual resume PDF in this folder with that filename, or update the link
-- Skills list — swap in your real language/tool list, this is a starting guess
+- `index.html`: shell; screens are hash routes (`#/experience`, `#/projects`, `#/projects/<id>`, `#/skills`, `#/about`)
+- `assets/js/data.js`: every word of content. Edit this, not the markup.
+- `assets/js/app.js`: screens, router, project selection, skills lookup, sound/motion options
+- `assets/js/pixel.js`: all icons, drawn in code (lines + fills, auto-outlined) and emitted as SVG
+- `assets/css/site.css`: styles
+- `assets/img/`: generated art. `python3 tools/gen_art.py` (landscape and stone; needs Pillow) and `node tools/gen-wordmark.mjs` (the stone wordmark) rebuild it.
+- Old `*.html` project pages are redirect stubs so existing links still land.
 
-## 1. Get it on GitHub Pages
+## Art and font
 
-1. Create a new repo on GitHub. If you want it at `yourusername.github.io`, name the repo exactly that. Otherwise any repo name works and it'll be served at `yourusername.github.io/repo-name`.
-2. Push these three files to the repo's default branch (usually `main`):
-   ```
-   git init
-   git add .
-   git commit -m "Initial portfolio"
-   git branch -M main
-   git remote add origin https://github.com/yourusername/your-repo.git
-   git push -u origin main
-   ```
-3. In the repo, go to **Settings → Pages**.
-4. Under **Source**, select the `main` branch and `/ (root)` folder, then save.
-5. GitHub will give you a URL like `https://yourusername.github.io/your-repo/` within a minute or two.
+Every texture, icon, and the wordmark are made in this repo by the scripts above. No game assets. The font is Pixelify Sans (SIL Open Font License 1.1, `assets/fonts/OFL-PixelifySans.txt`), self-hosted and subset to Latin.
 
-## 2. Point a custom domain at it
+Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
 
-If you buy a domain (Namecheap, Cloudflare, Porkbun, Google Domains/Squarespace, etc.):
+## Checks
 
-1. Create a file named `CNAME` (no extension) in this folder containing just your domain, e.g.:
-   ```
-   timiportfolio.com
-   ```
-   Commit and push it — GitHub Pages reads this file to know which domain to serve.
-2. At your domain registrar's DNS settings, add:
-   - For an apex domain (`timiportfolio.com`): four `A` records pointing to GitHub's IPs:
-     ```
-     185.199.108.153
-     185.199.109.153
-     185.199.110.153
-     185.199.111.153
-     ```
-   - For a `www` subdomain: a `CNAME` record pointing `www` to `yourusername.github.io`.
-   - Most people set up both — the apex records plus a `www` CNAME — and pick one as canonical in the GitHub Pages settings.
-3. Back in **Settings → Pages**, enter your custom domain in the box provided and save. Wait for DNS to propagate (can take a few minutes to a few hours), then check **Enforce HTTPS** once it's available — GitHub provisions a free certificate automatically.
+```
+npm ci
+npx playwright install chromium   # or PW_CHANNEL=chrome to reuse an installed Chrome
+npm run test:e2e
+```
 
-## Notes on the design
+Five journeys at 1440 and 390 wide: title menu, project select/search/open, skills lookup, content hygiene (no phone number, excluded projects, or em dashes), and old-URL redirects. Not wired into CI yet.
 
-- Fonts load from Google Fonts via CDN — no local font files needed.
-- The nav auto-highlights the active section as you scroll (see `script.js`).
-- Respects `prefers-reduced-motion` — the typing effect and transitions are disabled for users who've set that preference.
-- Everything is one column and collapses to a top bar under 860px.
+Local preview: `npm run serve`, then open http://localhost:4173.
