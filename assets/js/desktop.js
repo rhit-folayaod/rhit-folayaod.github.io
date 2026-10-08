@@ -73,7 +73,7 @@ function binBody() {
     <p class="win-status"><span>0 object(s)</span></p>`;
 }
 function shutdownBody() {
-  return `<div class="win-body shutdown"><p>It's now safe to close this tab.</p><p>Or don't. There are eight games left.</p></div>
+  return `<div class="win-body shutdown"><p>It's now safe to close this tab.</p><p>Or don't. There are seven games left.</p></div>
     <div class="win-actions"><button type="button" class="w-btn" data-close>Restart</button></div>`;
 }
 function bootBody(t) {

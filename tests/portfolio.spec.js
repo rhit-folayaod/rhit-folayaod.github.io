@@ -1,8 +1,8 @@
 const { test, expect } = require("@playwright/test");
 
-const THEMES = ["mario", "terraria", "minecraft", "sonic", "fortnite", "roblox", "clash", "fighter"];
+const THEMES = ["mario", "terraria", "minecraft", "sonic", "fortnite", "clash", "fighter"];
 const SECTIONS = ["", "/experience", "/projects", "/skills", "/about"];
-const DISCLAIMER = "Fan-made tribute. Not affiliated with or endorsed by Nintendo, Sega, Epic Games, Re-Logic, Mojang, Microsoft, Roblox Corporation, Supercell, or Capcom.";
+const DISCLAIMER = "Fan-made tribute. Not affiliated with or endorsed by Nintendo, Sega, Epic Games, Re-Logic, Mojang, Microsoft, Supercell, or Capcom.";
 const CURRENT = ["LinkedLife", "DAQ MCP Server", "MioDAQ Jetpack Joyride", "NBA Player Predictor"];
 const EARLIER = ["Editor Trees", "Online Sports Webstore", "Lost and Found Database", "Jetpack Joyride (Java)", "Settlers of Catan", "DSA From Scratch"];
 
@@ -10,7 +10,8 @@ test("desktop: one click on a game icon boots it, and the game can quit back", a
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Welcome.exe" })).toBeVisible();
   await expect(page.getByText(DISCLAIMER)).toBeVisible();
-  for (const name of ["Brick Hub", "Village Clash", "Arcade Brawl"]) await expect(page.getByRole("button", { name })).toBeVisible();
+  for (const name of ["Village Clash", "Arcade Brawl"]) await expect(page.getByRole("button", { name })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Brick Hub" })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Arcade Brawl" })).toHaveAttribute("title", "Street Fighter-style");
   await page.getByRole("button", { name: "Block Craft" }).click();
   await expect(page.getByRole("progressbar", { name: "Loading Block Craft" })).toBeVisible();
@@ -33,7 +34,7 @@ test("glory picks a random game, never the one opened last", async ({ page }) =>
   await page.goto("/");
   await page.getByRole("button", { name: "Open glory" }).click();
   await expect(page.getByText("Picking a game...")).toBeVisible();
-  await expect(page).toHaveURL(/#\/(terraria|minecraft|sonic|fortnite|roblox|clash|fighter)$/, { timeout: 10000 });
+  await expect(page).toHaveURL(/#\/(terraria|minecraft|sonic|fortnite|clash|fighter)$/, { timeout: 10000 });
   await expect(page.locator("main h1")).toBeVisible();
 });
 
@@ -96,7 +97,7 @@ test("content hygiene on every screen of every theme", async ({ page }) => {
   expect(text).not.toMatch(/Summer 2022/);
   expect(text).not.toContain("\u2014"); // no em dashes
   expect(text).not.toMatch(/\b(Mario|Luigi|Sonic|Steve|Minecraft|Terraria|Fortnite|Stardew|Street Fighter|Clash of Clans|Ryu|Chun-Li)\b/); // parody names only on screen
-  expect(text).not.toMatch(/\bRoblox\b(?! Corporation)|ConcernedApe/);
+  expect(text).not.toMatch(/Roblox|Brick Hub|ConcernedApe/);
   expect(errors, errors.join("\n")).toEqual([]);
 });
 
@@ -108,18 +109,13 @@ test("older projects come after the current ones, and the new themes open them",
   expect(order.every((i) => i >= 0)).toBe(true);
   await expect(page.getByText("Course & earlier projects")).toBeVisible();
 
-  // Brick Hub: Explorer tree drives the Properties panel, and the two jetpack games link to each other.
-  await page.goto("/#/roblox/projects");
-  await page.getByRole("treeitem", { name: "Jetpack Joyride (Java)" }).click();
-  await expect(page.getByRole("heading", { name: "Properties: Jetpack Joyride (Java)" })).toBeVisible();
-  await expect(page.locator("#b-props")).toContainText("Winter 2023");
-  await page.locator("#b-props").getByRole("link", { name: "MioDAQ Jetpack Joyride" }).click();
-  await expect(page.getByRole("heading", { name: "Properties: MioDAQ Jetpack Joyride" })).toBeVisible();
 
   // Village Clash: the Town Hall is About, the Workshop holds the older builds.
   await page.goto("/#/clash");
   await page.getByRole("link", { name: /Town Hall/ }).click();
-  await expect(page.getByRole("heading", { level: 1, name: /Town Hall/ })).toBeVisible();
+  // (the village h1 also mentions the Town Hall, so match the panel heading from its start)
+  await expect(page).toHaveURL(/#\/clash\/about$/);
+  await expect(page.getByRole("heading", { level: 1, name: /^Town Hall/ })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(page).toHaveURL(/#\/clash$/);
   await page.getByRole("link", { name: /Builder's Workshop/ }).click();
@@ -133,6 +129,11 @@ test("older projects come after the current ones, and the new themes open them",
   await page.getByRole("button", { name: "Editor Trees" }).click();
   await expect(page.locator("#x-bio")).toContainText("Summer 2024");
   await expect(page).toHaveURL(/#\/fighter\/projects\/editor-trees$/);
+  // ...and the two jetpack games link to each other.
+  await page.getByRole("button", { name: "Jetpack Joyride (Java)" }).click();
+  await expect(page.locator("#x-bio")).toContainText("Winter 2023");
+  await page.locator("#x-bio").getByRole("link", { name: /MioDAQ Jetpack Joyride/ }).click();
+  await expect(page.locator("#x-bio h2")).toHaveText("MioDAQ Jetpack Joyride");
 });
 
 test("old URLs land in the Block Craft theme", async ({ page }) => {
@@ -142,6 +143,10 @@ test("old URLs land in the Block Craft theme", async ({ page }) => {
   await expect(page).toHaveURL(/#\/minecraft\/projects$/);
   await page.goto("/#/experience");
   await expect(page).toHaveURL(/#\/minecraft\/experience$/);
+  // Brick Hub was retired; its links go home instead of a dead theme.
+  await page.goto("/#/roblox/projects/linkedlife");
+  await expect(page).toHaveURL(/#\/$/);
+  await expect(page.getByRole("heading", { name: "Welcome.exe" })).toBeVisible();
   await page.goto("/lost-and-found.html");
   await expect(page.getByRole("heading", { level: 1, name: "Lost and Found Database" })).toBeVisible();
 });

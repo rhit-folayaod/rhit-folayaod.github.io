@@ -1,4 +1,4 @@
-// "Block Craft": the original block-game title screen, now one theme of eight.
+// "Block Craft": the original block-game title screen, now one theme of seven.
 // Routes: #/minecraft, #/minecraft/experience, /projects[/<id>], /skills, /about
 import { icon, runes } from "../pixel.js";
 import { links, experience, projects, statusInfo, skills, about } from "../data.js";

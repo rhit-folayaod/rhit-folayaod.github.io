@@ -6,7 +6,7 @@ export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", 
 export const ext = 'target="_blank" rel="noopener"';
 
 export const DISCLAIMER =
-  "Fan-made tribute. Not affiliated with or endorsed by Nintendo, Sega, Epic Games, Re-Logic, Mojang, Microsoft, Roblox Corporation, Supercell, or Capcom.";
+  "Fan-made tribute. Not affiliated with or endorsed by Nintendo, Sega, Epic Games, Re-Logic, Mojang, Microsoft, Supercell, or Capcom.";
 export const disclaimer = (cls = "") => `<p class="disclaimer ${cls}">${DISCLAIMER}</p>`;
 
 // The games on the desktop. `name` is what shows on screen; `style` is the
@@ -17,7 +17,6 @@ export const THEMES = [
   { id: "minecraft", name: "Block Craft", style: "Minecraft-style", icon: "grass" },
   { id: "sonic", name: "Blue Blur Zone", style: "Sonic-style", icon: "ring" },
   { id: "fortnite", name: "Battle Royale Lobby", style: "Fortnite-style", icon: "crate" },
-  { id: "roblox", name: "Brick Hub", style: "Roblox-style", icon: "block" },
   { id: "clash", name: "Village Clash", style: "Clash of Clans-style", icon: "townhall" },
   { id: "fighter", name: "Arcade Brawl", style: "Street Fighter-style", icon: "joystick" },
 ];

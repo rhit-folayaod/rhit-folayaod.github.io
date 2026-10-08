@@ -414,29 +414,6 @@ const draw = {
     outline(g); return g;
   },
   /* ---------- three more desktop games ---------- */
-  block() {
-    // A smooth block turned on its corner: lit top, two shaded sides, no studs.
-    const g = grid(16);
-    rows(g, 1, 0, [
-      "......hh......",
-      "....hTTTTh....",
-      "..hTTTTTTTTh..",
-      "hTTTTTTTTTTTTh",
-      "LLTTTTTTTTTTRR",
-      "LLLLTTTTTTRRRR",
-      "LLLLLLTTRRRRRR",
-      "LLLLLLLRRRRRRR",
-      "LLLLLLLRRRRRRR",
-      "LLLLLLLRRRRRRR",
-      "LLLLLLLRRRRRRR",
-      "LLLLLLLRRRRRRR",
-      "LLLLLLLRRRRRRR",
-      "..LLLLLRRRRR..",
-      "....LLLRRR....",
-      "......LR......",
-    ], { h: "#ff8a80", T: "#ef5350", L: "#c62828", R: "#8e1b1b" });
-    outline(g); return g;
-  },
   townhall() {
     const g = grid(16);
     fill(g, (x, y) => y >= 13 && y <= 14 && x >= 1 && x <= 14, "#9e9e9e");
