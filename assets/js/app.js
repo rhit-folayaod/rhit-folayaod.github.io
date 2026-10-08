@@ -246,6 +246,7 @@ function wireSkills() {
     if (!b) return;
     cat = +b.dataset.i;
     renderBooks();
+    books.scrollIntoView({ block: "nearest", behavior: prefs.motion === "full" ? "smooth" : "auto" });
   });
   books.addEventListener("click", (e) => {
     const b = e.target.closest(".ench");
@@ -256,6 +257,7 @@ function wireSkills() {
     enchant.innerHTML = `<h2>${esc(name)}</h2>${runes(name)}
       ${uses.length ? `<p class="used-label">Used in</p><ul class="used">${uses.map((u) => `<li>${esc(u)}</li>`).join("")}</ul>`
         : `<p>On my resume, not tied to a project on this site.</p>`}`;
+    enchant.scrollIntoView({ block: "nearest", behavior: prefs.motion === "full" ? "smooth" : "auto" });
   });
   renderBooks();
 }

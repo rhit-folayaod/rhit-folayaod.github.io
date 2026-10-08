@@ -391,6 +391,13 @@ body:not([data-screen="title"]) .version { display: none; }
   .enchant { padding: 10px; }
   .enchant .px { width: 64px; height: 64px; }
   .book-grid { grid-template-columns: 1fr 1fr; }
+  .cats { gap: 5px; }
+  .cat { grid-template-columns: 36px 1fr auto; gap: 10px; padding: 5px 10px; }
+  .cat .runes { display: none; }
+  .cat-name { font-size: 16px; }
+  .slot { width: 36px; height: 36px; padding: 3px; }
+  .enchant h2 { font-size: 18px; }
+  .ench .px { width: 24px; height: 24px; }
   .about { grid-template-columns: 1fr; padding: 14px; }
   .about-left { justify-items: stretch; }
   .photo { width: 160px; justify-self: center; }
