@@ -3,7 +3,7 @@
 // Nothing here is a ripped asset: blocks, pipes, coins, hills and clouds are CSS.
 import { icon } from "../pixel.js";
 import { experience, projects, statusInfo, skills, about } from "../data.js";
-import { esc, ext, DISCLAIMER, contactLinks, linkAttrs, usedIn, setSubPath } from "../shared.js";
+import { esc, ext, DISCLAIMER, contactLinks, linkAttrs, usedIn, setSubPath, noSource, groupStart } from "../shared.js";
 
 const R = (p = "") => `#/mario${p ? `/${p}` : ""}`;
 const WORLDS = [
@@ -82,7 +82,7 @@ function projectDetail(p) {
   const s = statusInfo[p.status];
   const acts = [
     p.live ? `<a class="m-pipebtn" href="${p.live}" ${ext}>Open site &#9654;</a>` : "",
-    p.repo ? `<a class="m-pipebtn" href="${p.repo}" ${ext}>GitHub &#9654;</a>` : `<span class="m-note">Source is private.</span>`,
+    p.repo ? `<a class="m-pipebtn" href="${p.repo}" ${ext}>GitHub &#9654;</a>` : `<span class="m-note">${noSource(p)}</span>`,
   ].join("");
   return `<article class="m-card m-detail" aria-live="polite">
       <div class="m-detail-head"><span class="m-item">${icon(p.icon)}</span>
@@ -97,7 +97,7 @@ function projectsPage(sel) {
   const hit = hitSet();
   const cur = projects.find((p) => p.id === sel) || projects[0];
   hit.add(cur.id);
-  const blocks = projects.map((p) => `<li><button type="button" class="m-block${hit.has(p.id) ? " is-hit" : ""}" data-id="${p.id}" aria-pressed="${p.id === cur.id}">
+  const blocks = projects.map((p) => `${groupStart(p, "m-grp")}<li><button type="button" class="m-block${hit.has(p.id) ? " is-hit" : ""}" data-id="${p.id}" aria-pressed="${p.id === cur.id}">
       <span class="m-pop" aria-hidden="true">${icon(p.icon)}</span>
       <span class="qb" aria-hidden="true">?</span>
       <span class="m-block-name">${esc(p.name)}</span></button></li>`).join("");

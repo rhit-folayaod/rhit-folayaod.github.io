@@ -1,7 +1,7 @@
 // The start screen: a late-90s style desktop. Game icons boot a theme; the
 // other icons open small windows with the resume, contact links, and a joke.
 import { icon } from "./pixel.js";
-import { links, experience, projects, about } from "./data.js";
+import { links, experience, currentProjects, earlierProjects, about } from "./data.js";
 import { esc, ext, THEMES, DISCLAIMER, contactLinks, linkAttrs, themeById } from "./shared.js";
 
 const EXTRAS = [
@@ -44,13 +44,16 @@ function gloryBody() {
 function resumeBody() {
   const pad = (s, n) => esc(s) + "&nbsp;".repeat(Math.max(1, n - s.length));
   const xp = experience.map((e) => `<p><b>${pad(e.when, 22)}</b>${esc(e.role)}<br><span class="indent">${esc(e.org)}, ${esc(e.where)}</span></p>`).join("");
-  const pj = projects.map((p) => `<p><b>${esc(p.name)}</b><br><span class="indent">${esc(p.blurb)}</span>${p.live ? `<br><span class="indent"><a href="${p.live}" ${ext}>${esc(p.live)}</a></span>` : ""}</p>`).join("");
+  const row = (p) => `<p><b>${esc(p.name)}</b><br><span class="indent">${esc(p.blurb)}</span>${p.live ? `<br><span class="indent"><a href="${p.live}" ${ext}>${esc(p.live)}</a></span>` : ""}</p>`;
+  const pj = currentProjects.map(row).join("");
+  const old = earlierProjects.map(row).join("");
   return `<div class="win-menu" aria-hidden="true"><span>File</span><span>Edit</span><span>Search</span><span>Help</span></div>
     <div class="win-body paper mono" tabindex="0" aria-label="Resume text">
       <p><b>${esc(about.name.toUpperCase())}</b><br>${esc(links.email)}</p>
       <p>B.S. Software Engineering, Minor in Geography<br>Rose-Hulman Institute of Technology, May 2027</p>
       <h3>EXPERIENCE</h3>${xp}
       <h3>PROJECTS</h3>${pj}
+      <h3>COURSE &amp; EARLIER PROJECTS</h3>${old}
     </div>
     <div class="win-actions"><a class="w-btn" href="${links.resume}" ${ext}>Open Resume.pdf</a><button type="button" class="w-btn" data-close>Close</button></div>`;
 }
@@ -70,7 +73,7 @@ function binBody() {
     <p class="win-status"><span>0 object(s)</span></p>`;
 }
 function shutdownBody() {
-  return `<div class="win-body shutdown"><p>It's now safe to close this tab.</p><p>Or don't. There are five games left.</p></div>
+  return `<div class="win-body shutdown"><p>It's now safe to close this tab.</p><p>Or don't. There are seven games left.</p></div>
     <div class="win-actions"><button type="button" class="w-btn" data-close>Restart</button></div>`;
 }
 function bootBody(t) {

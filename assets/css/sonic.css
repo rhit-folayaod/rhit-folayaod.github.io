@@ -195,3 +195,5 @@ a { color: var(--yellow); }
   .s-detail h2 { font-size: 22px; }
   .s-ringrows { grid-template-columns: 1fr; }
 }
+
+.s-grp { grid-column: 1 / -1; margin-top: 4px; font-family: var(--disp); font-size: 14px; color: var(--yellow); text-shadow: 2px 2px 0 #000; }

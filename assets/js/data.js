@@ -59,7 +59,8 @@ export const experience = [
   },
 ];
 
-// status: deployed | released | private
+// status: deployed | released | private | earlier
+// "earlier" = course and earlier projects. They always come after the current ones.
 export const projects = [
   {
     id: "linkedlife",
@@ -94,22 +95,6 @@ export const projects = [
     ],
   },
   {
-    id: "systemlink-mcp",
-    name: "systemlink-mcp",
-    year: 2026,
-    icon: "rack",
-    status: "released",
-    blurb: "The fleet-level companion to DAQ MCP: an MCP server for NI SystemLink shaped around the questions test engineers actually ask.",
-    tags: ["Python", "MCP", "FastMCP", "Pydantic", "uv", "pytest"],
-    live: null,
-    repo: "https://github.com/rhit-folayaod/systemlink-mcp",
-    detail: [
-      "Twelve tools for yield by product revision, failing DUT steps against spec limits, measurement-trace summaries, and calibration-due assets. Responses are summaries plus a bounded preview, not raw result dumps, so a model's context stays usable.",
-      "Read-only by default. The two write tools refuse unless an environment flag is set.",
-      "Tools call a backend interface instead of the SDK directly, so a pure-Python simulated fleet runs with no SystemLink server. The live backend is written against nisystemlink-clients but has not been run against a SystemLink Enterprise instance in CI. Personal project; not affiliated with NI or Emerson.",
-    ],
-  },
-  {
     id: "jetpack-joyride",
     name: "MioDAQ Jetpack Joyride",
     year: 2026,
@@ -122,8 +107,9 @@ export const projects = [
     detail: [
       "Hold a button to fire the jetpack, let go to drop. Two players share one screen, one lane each, and race the same seeded course until both crash.",
       "A background thread polls the DAQ so driver reads never stall the 60fps game loop, and LEDs mirror each player's button. With no hardware it falls back to the keyboard; during a hardware round the keyboard is ignored so a bystander can't steal control.",
-      "Self-initiated during my Emerson (NI) internship, not an assigned project.",
+      "Self-initiated during my Emerson (NI) internship, not an assigned project. It's the second time I've built this game: the first was a team Java version in Winter 2023.",
     ],
+    related: "jetpack-java",
   },
   {
     id: "nba-player-predictor",
@@ -141,13 +127,111 @@ export const projects = [
       "The model is served from its own containerized FastAPI service. GitHub Actions runs tests and migrations on every push, deploys QA to GKE automatically, and gates production behind a manual approval.",
     ],
   },
+  /* ---------- course & earlier projects (keep these last) ---------- */
+  {
+    id: "editor-trees",
+    name: "Editor Trees",
+    year: "Summer 2024",
+    icon: "branches",
+    status: "earlier",
+    blurb: "A team-built custom data structure in Java, designed from its theory up before any code was written.",
+    tags: ["Java", "Eclipse", "Data structures", "Algorithm design"],
+    live: null,
+    repo: null,
+    detail: [
+      "Designed and implemented a complex custom data structure from its theoretical foundations, with the algorithms planned out before implementation instead of written ad hoc.",
+      "Built as a team: we worked the theory out together first, then split the implementation.",
+    ],
+  },
+  {
+    id: "online-sports-webstore",
+    name: "Online Sports Webstore",
+    year: "Spring 2024",
+    icon: "cart",
+    status: "earlier",
+    blurb: "An online store built from scratch in plain HTML, CSS, and JavaScript, with CRUD for products and orders.",
+    tags: ["HTML/CSS", "JavaScript", "CRUD", "Pair programming"],
+    live: null,
+    repo: null,
+    detail: [
+      "A responsive storefront with no framework, from product pages through checkout.",
+      "CRUD operations handle product management and order processing on the seller side.",
+      "Pair-programmed with a teammate to add real-time product updates and order tracking.",
+    ],
+  },
+  {
+    id: "lost-and-found",
+    name: "Lost and Found Database",
+    year: "Winter 2024",
+    icon: "magnifier",
+    status: "earlier",
+    blurb: "A lost-and-found system on Microsoft SQL Server with a Java interface for admins and users.",
+    tags: ["SQL", "Java", "MS SQL Server", "Eclipse", "Object-oriented design"],
+    live: null,
+    repo: null,
+    detail: [
+      "Designed the database for logging and tracking lost and found items on Microsoft SQL Server.",
+      "Built a Java UI for admins and users on top of it, using object-oriented design and Java-SQL connectivity so the app and the schema could change independently.",
+    ],
+  },
+  {
+    id: "jetpack-java",
+    name: "Jetpack Joyride (Java)",
+    year: "Winter 2023",
+    icon: "rocket",
+    status: "earlier",
+    blurb: "The original version: a side-scrolling jetpack game in Java that I led a team to build.",
+    tags: ["Java", "Eclipse", "UML", "Object-oriented design"],
+    live: null,
+    repo: null,
+    detail: [
+      "Led the team from concept through design specs and feature development.",
+      "Laid out the architecture first as a UML class diagram, using object-oriented design to pin down every class and relationship before coding.",
+      "Directed the core mechanics: jetpack flight, collision detection against barriers, and missile behavior.",
+      "I rebuilt the idea in 2026 as a two-player game on NI hardware (MioDAQ Jetpack Joyride).",
+    ],
+    related: "jetpack-joyride",
+  },
+  {
+    id: "settlers-of-catan",
+    name: "Settlers of Catan",
+    year: null,
+    icon: "hex",
+    status: "earlier",
+    blurb: "A multi-module Java implementation of Catan, with game logic, board state, and player interaction kept in separate modules.",
+    tags: ["Java", "Maven", "Internationalization"],
+    live: null,
+    repo: null,
+    detail: [
+      "Split into cleanly separated packages for game logic, board state, and player interaction.",
+      "Untangled classpath issues and internationalization resource-bundle loading in a fresh build environment, the kind of bug that only shows up once the project structure gets real.",
+    ],
+  },
+  {
+    id: "dsa-from-scratch",
+    name: "DSA From Scratch",
+    year: null,
+    icon: "stack",
+    status: "earlier",
+    blurb: "A self-directed rebuild of my data-structures fundamentals in Python: approach in plain English first, then code.",
+    tags: ["Python", "Data structures", "Algorithms"],
+    live: null,
+    repo: null,
+    detail: [
+      "Each problem starts with a plain-English approach before any code, runs on a 25-35 minute struggle timer, and gets a cold re-solve the next day.",
+      "The goal is pattern recognition in hashmap and two-pointer problems: recognize the shape of a problem before reaching for a technique, instead of memorizing solutions.",
+    ],
+  },
 ];
 
 export const statusInfo = {
   deployed: { label: "Deployed", bars: 4, tone: "green" },
   released: { label: "Released", bars: 3, tone: "green" },
   private: { label: "Private", bars: 1, tone: "aqua" },
+  earlier: { label: "Course / earlier", bars: 2, tone: "gray" },
 };
+export const currentProjects = projects.filter((p) => p.status !== "earlier");
+export const earlierProjects = projects.filter((p) => p.status === "earlier");
 
 export const skills = [
   { tool: "sword", name: "Languages", items: ["Python", "Java", "SQL", "C#", "TypeScript", "JavaScript", "HTML/CSS", "C", "C++"] },

@@ -3,7 +3,7 @@
 // Rarity colors stand for something real: project status, skill category.
 import { icon } from "../pixel.js";
 import { links, experience, projects, statusInfo, skills, about } from "../data.js";
-import { esc, ext, DISCLAIMER, contactLinks, linkAttrs, usedIn, setSubPath } from "../shared.js";
+import { esc, ext, DISCLAIMER, contactLinks, linkAttrs, usedIn, setSubPath, noSource, groupStart, currentProjects, earlierProjects } from "../shared.js";
 
 const R = (p = "") => `#/fortnite${p ? `/${p}` : ""}`;
 const TABS = [
@@ -13,7 +13,7 @@ const TABS = [
   { id: "skills", label: "Locker", sub: "Skills" },
   { id: "about", label: "Career", sub: "About" },
 ];
-const PROJECT_RARITY = { deployed: "legendary", released: "epic", private: "rare" };
+const PROJECT_RARITY = { deployed: "legendary", released: "epic", private: "rare", earlier: "common" };
 const SKILL_RARITY = ["legendary", "rare", "epic", "uncommon", "common"];
 const TIER_RARITY = ["uncommon", "rare", "epic", "legendary"];
 
@@ -95,7 +95,7 @@ function itemDetail(p) {
       <p class="f-lead">${esc(p.blurb)}</p>
       ${p.detail.map((d) => `<p>${esc(d)}</p>`).join("")}
       <ul class="f-tags">${p.tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-      <p class="f-actions">${p.live ? `<a class="f-btn" href="${p.live}" ${ext}>Open site</a>` : ""}${p.repo ? `<a class="f-btn" href="${p.repo}" ${ext}>GitHub</a>` : `<span class="f-note">Source is private.</span>`}</p>
+      <p class="f-actions">${p.live ? `<a class="f-btn" href="${p.live}" ${ext}>Open site</a>` : ""}${p.repo ? `<a class="f-btn" href="${p.repo}" ${ext}>GitHub</a>` : `<span class="f-note">${noSource(p)}</span>`}</p>
     </article>`;
 }
 function shopPage(sel) {
@@ -106,8 +106,9 @@ function shopPage(sel) {
       <span class="f-price">${statusInfo[p.status].label}${p.year ? ` &middot; ${p.year}` : ""}</span></button></li>`;
   return chrome("projects", `<h1 class="f-h" tabindex="-1">Item Shop<small>Projects &middot; nothing here costs anything</small></h1>
     <div class="f-shop">
-      <div><p class="f-section">Featured</p><ul class="f-grid featured">${projects.slice(0, 2).map((p) => card(p, true)).join("")}</ul>
-        <p class="f-section">Daily</p><ul class="f-grid daily">${projects.slice(2).map((p) => card(p)).join("")}</ul></div>
+      <div><p class="f-section">Featured</p><ul class="f-grid featured">${currentProjects.slice(0, 2).map((p) => card(p, true)).join("")}</ul>
+        <p class="f-section">Daily</p><ul class="f-grid daily">${currentProjects.slice(2).map((p) => card(p)).join("")}</ul>
+        <p class="f-section">Vault <small class="f-vault-note">Course &amp; earlier projects</small></p><ul class="f-grid daily vault">${earlierProjects.map((p) => card(p)).join("")}</ul></div>
       <div id="f-item">${itemDetail(cur)}</div>
     </div>`);
 }

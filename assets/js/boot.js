@@ -10,6 +10,8 @@ const modules = {
   terraria: () => import("./themes/terraria.js"),
   sonic: () => import("./themes/sonic.js"),
   fortnite: () => import("./themes/fortnite.js"),
+  clash: () => import("./themes/clash.js"),
+  fighter: () => import("./themes/fighter.js"),
 };
 
 /* ---------- per-theme stylesheets: loaded once, switched by media ---------- */
@@ -58,6 +60,8 @@ function fallbackHtml(err) {
 
 /* ---------- routes ---------- */
 const OLD_SECTIONS = ["experience", "projects", "skills", "about"];
+// Themes that were taken down. Any link into one goes back to the desktop.
+const RETIRED = ["roblox"];
 const OLD_ANCHORS = { about: "about", experience: "experience", projects: "projects", skills: "skills", leadership: "about", contact: "about", education: "about" };
 
 function parse() {
@@ -66,6 +70,7 @@ function parse() {
   // Links from before the desktop existed: "#projects", "#/projects/daq-mcp", ...
   if (OLD_ANCHORS[h] && !raw.startsWith("#/")) return { redirect: `#/minecraft/${OLD_ANCHORS[h]}` };
   const [first, ...rest] = h.split("/");
+  if (RETIRED.includes(first)) return { redirect: "#/" };
   if (OLD_SECTIONS.includes(first)) return { redirect: `#/minecraft/${h}` };
   if (themeById(first)) return { theme: first, path: rest.filter(Boolean) };
   return { theme: "desktop", path: [] };
