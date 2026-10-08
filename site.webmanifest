@@ -1,0 +1,14 @@
+{
+  "name": "Timi Folayan Portfolio",
+  "short_name": "Timi",
+  "description": "Software Engineering @ Rose-Hulman (May 2027). Pick a game to explore my experience and projects.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#008080",
+  "theme_color": "#008080",
+  "icons": [
+    { "src": "/assets/og/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/og/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
