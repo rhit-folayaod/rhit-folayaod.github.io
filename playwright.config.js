@@ -13,6 +13,8 @@ module.exports = defineConfig({
   projects: [
     { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 900 } } },
     { name: "mobile", use: { ...devices["Desktop Chrome"], viewport: { width: 390, height: 844 }, hasTouch: true } },
+    // iOS Safari stand-in. The blank-page bug was WebKit-only (media=not all onload).
+    { name: "webkit-iphone", use: { ...devices["iPhone 13"], browserName: "webkit" } },
   ],
   webServer: {
     command: "python3 -m http.server 4173 --bind 127.0.0.1",
