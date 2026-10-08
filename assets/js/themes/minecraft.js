@@ -1,9 +1,10 @@
-import { icon, runes } from "./pixel.js";
-import { links, experience, projects, statusInfo, skills, about } from "./data.js";
+// "Block Craft": the original block-game title screen, now one theme of five.
+// Routes: #/minecraft, #/minecraft/experience, /projects[/<id>], /skills, /about
+import { icon, runes } from "../pixel.js";
+import { links, experience, projects, statusInfo, skills, about } from "../data.js";
+import { esc, ext, DISCLAIMER, usedIn } from "../shared.js";
 
-const main = document.getElementById("main");
-const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const ext = 'target="_blank" rel="noopener"';
+const R = (p = "") => `#/minecraft${p ? `/${p}` : ""}`;
 
 /* ---------- settings: sound + motion ---------- */
 const prefs = {
@@ -28,38 +29,57 @@ function click() {
   src.connect(f).connect(g).connect(audio.destination);
   src.start(t);
 }
-function applyPrefs() {
+function applyPrefs(root) {
   document.documentElement.dataset.motion = prefs.motion;
-  const mute = document.getElementById("mute");
+  const mute = root.querySelector("#mute");
   mute.innerHTML = icon(prefs.sound ? "sound" : "muted");
   mute.setAttribute("aria-pressed", String(prefs.sound));
   mute.setAttribute("aria-label", prefs.sound ? "Click sounds on. Turn off" : "Click sounds off. Turn on");
-  document.querySelector('[data-opt="sound"]').textContent = `Click sounds: ${prefs.sound ? "On" : "Off"}`;
-  document.querySelector('[data-opt="motion"]').textContent = `Motion: ${prefs.motion === "full" ? "Full" : "Reduced"}`;
+  root.querySelector('[data-opt="sound"]').textContent = `Click sounds: ${prefs.sound ? "On" : "Off"}`;
+  root.querySelector('[data-opt="motion"]').textContent = `Motion: ${prefs.motion === "full" ? "Full" : "Reduced"}`;
   localStorage.setItem("tf.sound", prefs.sound ? "on" : "off");
   localStorage.setItem("tf.motion", prefs.motion);
 }
-document.getElementById("settings").innerHTML = icon("gear");
-document.getElementById("mute").addEventListener("click", () => { prefs.sound = !prefs.sound; applyPrefs(); click(); });
-const dlg = document.getElementById("settings-dialog");
-document.getElementById("settings").addEventListener("click", () => dlg.showModal());
-dlg.addEventListener("click", (e) => {
-  const opt = e.target.closest("[data-opt]")?.dataset.opt;
-  if (opt === "sound") prefs.sound = !prefs.sound;
-  if (opt === "motion") prefs.motion = prefs.motion === "full" ? "reduced" : "full";
-  if (opt) applyPrefs();
-  if (e.target === dlg) dlg.close();
-});
-document.addEventListener("click", (e) => { if (e.target.closest(".mc-btn, .proj, .cat, .ench")) click(); });
+const chrome = () => `<div class="bg" aria-hidden="true"></div>
+  <div class="corner corner-left">
+    <button type="button" class="mc-btn mc-square" id="mute" aria-pressed="false" aria-label="Click sounds off. Turn on"></button>
+    <button type="button" class="mc-btn mc-square" id="settings" aria-haspopup="dialog" aria-label="Settings">${icon("gear")}</button>
+    <span class="version">Portfolio v2.0</span>
+  </div>
+  <dialog id="settings-dialog" class="mc-dialog" aria-labelledby="settings-title">
+    <h2 id="settings-title">Options</h2>
+    <div class="opt-list">
+      <button type="button" class="mc-btn" data-opt="sound"></button>
+      <button type="button" class="mc-btn" data-opt="motion"></button>
+    </div>
+    <form method="dialog"><button class="mc-btn" value="done">Done</button></form>
+  </dialog>`;
+function wireChrome(root, ctx) {
+  const dlg = root.querySelector("#settings-dialog");
+  root.querySelector("#mute").addEventListener("click", () => { prefs.sound = !prefs.sound; applyPrefs(root); click(); });
+  root.querySelector("#settings").addEventListener("click", () => dlg.showModal());
+  dlg.addEventListener("click", (e) => {
+    const opt = e.target.closest("[data-opt]")?.dataset.opt;
+    if (opt === "sound") prefs.sound = !prefs.sound;
+    if (opt === "motion") prefs.motion = prefs.motion === "full" ? "reduced" : "full";
+    if (opt) applyPrefs(root);
+    if (e.target === dlg) dlg.close();
+  });
+  const onClick = (e) => { if (e.target.closest(".mc-btn, .proj, .cat, .ench")) click(); };
+  root.addEventListener("click", onClick);
+  ctx.cleanup(() => root.removeEventListener("click", onClick));
+  applyPrefs(root);
+}
 
 /* ---------- shared bits ---------- */
 const chips = (tags) => `<ul class="chips" aria-label="Tags">${tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
-const backBtn = (href = "#/", label = "Back") => `<a class="mc-btn back" href="${href}" data-back>${label}</a>`;
+const backBtn = (href = R(), label = "Back") => `<a class="mc-btn back" href="${href}" data-back>${label}</a>`;
 function screen(id, title, body, foot) {
   return `<section class="screen screen-${id}" aria-labelledby="h-${id}">
     <h1 class="screen-heading" id="h-${id}" tabindex="-1">${esc(title)}</h1>
     ${body}
     <div class="screen-foot">${foot ?? backBtn()}</div>
+    <p class="legal legal-sub">${DISCLAIMER}</p>
   </section>`;
 }
 
@@ -71,17 +91,18 @@ function titleScreen() {
       <p class="splash" aria-hidden="true">SWE @ Rose-Hulman!</p>
     </header>
     <nav class="menu" aria-label="Main menu">
-      <a class="mc-btn" href="#/experience">Experience</a>
-      <a class="mc-btn" href="#/projects">Projects</a>
-      <a class="mc-btn" href="#/about">About Me</a>
+      <a class="mc-btn" href="${R("experience")}">Experience</a>
+      <a class="mc-btn" href="${R("projects")}">Projects</a>
+      <a class="mc-btn" href="${R("about")}">About Me</a>
       <div class="menu-row">
         <a class="mc-btn mc-square" href="${links.github}" ${ext} aria-label="GitHub (opens in new tab)">${icon("github")}</a>
         <a class="mc-btn" href="${links.resume}" ${ext}>Resume</a>
-        <a class="mc-btn" href="#/skills">Skills</a>
+        <a class="mc-btn" href="${R("skills")}">Skills</a>
         <a class="mc-btn mc-square" href="${links.linkedin}" ${ext} aria-label="LinkedIn (opens in new tab)">${icon("linkedin")}</a>
       </div>
+      <a class="mc-btn quit" href="#/" data-back>Quit to Desktop</a>
     </nav>
-    <p class="legal">© 2026 Timi Folayan. Not an official Minecraft product.<br>Not approved by or associated with Mojang or Microsoft.</p>
+    <p class="legal">© 2026 Timi Folayan. ${DISCLAIMER}</p>
   </section>`;
 }
 
@@ -133,11 +154,11 @@ function projectsScreen() {
     </div>`;
   return screen("projects", "Select Project", body, foot);
 }
-function wireProjects() {
+function wireProjects(root) {
   let selected = null;
-  const list = document.getElementById("proj-list");
-  const open = document.getElementById("p-open"), gh = document.getElementById("p-gh"), cancel = document.getElementById("p-cancel");
-  const count = document.getElementById("proj-count"), empty = document.getElementById("proj-empty");
+  const list = root.querySelector("#proj-list");
+  const open = root.querySelector("#p-open"), gh = root.querySelector("#p-gh"), cancel = root.querySelector("#p-cancel");
+  const count = root.querySelector("#proj-count"), empty = root.querySelector("#proj-empty");
   const visible = () => [...list.querySelectorAll(".proj")].filter((b) => !b.closest("li").hidden);
   function sync() {
     const p = projects.find((x) => x.id === selected);
@@ -154,7 +175,7 @@ function wireProjects() {
     const p = projects.find((x) => x.id === selected);
     if (!p) return;
     if (p.live) window.open(p.live, "_blank", "noopener");
-    else location.hash = `#/projects/${p.id}`;
+    else location.hash = R(`projects/${p.id}`);
   }
   list.addEventListener("click", (e) => {
     const b = e.target.closest(".proj");
@@ -179,7 +200,7 @@ function wireProjects() {
     if (p?.repo) window.open(p.repo, "_blank", "noopener");
   });
   cancel.addEventListener("click", () => { selected = null; sync(); });
-  document.getElementById("proj-search").addEventListener("input", (e) => {
+  root.querySelector("#proj-search").addEventListener("input", (e) => {
     const q = e.target.value.trim().toLowerCase();
     projects.forEach((p) => {
       const hit = !q || [p.name, p.blurb, ...p.tags].join(" ").toLowerCase().includes(q);
@@ -208,14 +229,10 @@ function projectDetail(p) {
       ${chips(p.tags)}
       ${!p.repo ? `<p class="note">Source is private.</p>` : ""}
     </div>`;
-  return screen(`detail`, p.name, body, `<div class="bar2">${actions}${backBtn("#/projects")}</div>`);
+  return screen(`detail`, p.name, body, `<div class="bar2">${actions}${backBtn(R("projects"))}</div>`);
 }
 
 /* ---------- skills ---------- */
-const usedIn = (skill) => [
-  ...experience.filter((e) => e.tags.includes(skill)).map((e) => e.org),
-  ...projects.filter((p) => p.tags.includes(skill)).map((p) => p.name),
-];
 function skillsScreen() {
   const cats = skills.map((c, i) => `
     <li><button type="button" class="cat" data-i="${i}" aria-pressed="${i === 0}">
@@ -230,18 +247,18 @@ function skillsScreen() {
     </div>`;
   return screen("skills", "Skills", body);
 }
-function wireSkills() {
-  const enchant = document.getElementById("enchant"), books = document.getElementById("books");
+function wireSkills(root) {
+  const enchant = root.querySelector("#enchant"), books = root.querySelector("#books");
   let cat = 0;
   const idle = () => `<h2>Enchant</h2>${icon("openBook")}<p>Pick a tool, then a book to see where I've used it.</p>`;
   function renderBooks() {
     const c = skills[cat];
     books.innerHTML = `<div class="books-head"><h2>${esc(c.name)}</h2><span>${c.items.length} applied</span></div>
       <ul class="book-grid">${c.items.map((s) => `<li><button type="button" class="ench" aria-pressed="false">${icon("book")}<span>${esc(s)}</span></button></li>`).join("")}</ul>`;
-    document.querySelectorAll(".cat").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.i === cat)));
+    root.querySelectorAll(".cat").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.i === cat)));
     enchant.innerHTML = idle();
   }
-  document.querySelector(".cats").addEventListener("click", (e) => {
+  root.querySelector(".cats").addEventListener("click", (e) => {
     const b = e.target.closest(".cat");
     if (!b) return;
     cat = +b.dataset.i;
@@ -289,42 +306,29 @@ function aboutScreen() {
   return screen("about", "About Me", body);
 }
 
-/* ---------- router ---------- */
+/* ---------- routes ---------- */
 const routes = {
-  "": [titleScreen],
-  experience: [experienceScreen],
-  projects: [projectsScreen, wireProjects],
-  skills: [skillsScreen, wireSkills],
-  about: [aboutScreen],
+  "": [titleScreen, null, "title"],
+  experience: [experienceScreen, null, "Experience"],
+  projects: [projectsScreen, wireProjects, "Projects"],
+  skills: [skillsScreen, wireSkills, "Skills"],
+  about: [aboutScreen, null, "About"],
 };
-const legacy = { about: "about", experience: "experience", projects: "projects", skills: "skills", leadership: "about", contact: "about", education: "about" };
-let first = true;
-function render() {
-  let h = location.hash.replace(/^#\/?/, "");
-  if (legacy[h] && !location.hash.startsWith("#/")) { location.replace(`#/${legacy[h]}`); return; }
-  const [page, sub] = h.split("/");
-  let html, wire, name = page || "title";
+function render([page = "", sub]) {
+  let html, wire, name = page || "title", title;
   const p = page === "projects" && sub && projects.find((x) => x.id === sub);
-  if (p) { html = projectDetail(p); name = "detail"; document.title = `${p.name} | Timi Folayan`; }
+  if (p) { html = projectDetail(p); name = "detail"; title = `${p.name} | Block Craft | Timi Folayan`; }
   else {
     const r = routes[page] || routes[""];
     if (!routes[page]) name = "title";
     [html, wire] = [r[0](), r[1]];
-    const t = { experience: "Experience", projects: "Projects", skills: "Skills", about: "About" }[name];
-    document.title = t ? `${t} | Timi Folayan` : "Timi Folayan | Software Engineering @ Rose-Hulman";
+    title = name === "title" ? "Block Craft | Timi Folayan" : `${r[2]} | Block Craft | Timi Folayan`;
   }
-  document.body.dataset.screen = name;
-  main.innerHTML = html;
-  wire?.();
-  if (!first) main.querySelector("h1")?.focus({ preventScroll: true });
-  first = false;
+  return {
+    html: chrome() + html,
+    title,
+    screen: name,
+    wire(root, ctx) { wireChrome(root, ctx); wire?.(root); },
+  };
 }
-addEventListener("hashchange", render);
-addEventListener("keydown", (e) => {
-  if (e.key !== "Escape" || dlg.open) return;
-  if (e.target.matches?.("input") && e.target.value) return;
-  const back = main.querySelector("[data-back]");
-  if (back) location.hash = back.getAttribute("href");
-});
-applyPrefs();
-render();
+export default { render };

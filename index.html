@@ -8,18 +8,17 @@
 <meta property="og:title" content="Timi Folayan | Portfolio">
 <meta property="og:description" content="Software Engineering @ Rose-Hulman, May 2027. Experience, projects, and skills.">
 <meta property="og:url" content="https://rhit-folayaod.github.io/">
-<meta name="theme-color" content="#1b1b1b">
-<link rel="preload" href="assets/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4' shape-rendering='crispEdges'%3E%3Crect width='4' height='4' fill='%23777'/%3E%3Crect x='1' y='1' width='2' height='1' fill='%23ccc'/%3E%3Crect y='3' width='4' height='1' fill='%23444'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta name="theme-color" content="#008080">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4' shape-rendering='crispEdges'%3E%3Crect width='4' height='4' fill='%23008080'/%3E%3Crect x='1' y='1' width='2' height='2' fill='%23c0c0c0'/%3E%3Crect x='1' y='1' width='2' height='1' fill='%23000080'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="modulepreload" href="assets/js/desktop.js">
 </head>
-<body data-screen="title">
-<div class="bg" aria-hidden="true"></div>
+<body data-theme="desktop">
 <a class="skip" href="#main">Skip to content</a>
 
 <main id="main" tabindex="-1">
   <noscript>
-    <section class="screen screen-noscript">
+    <section style="max-width:640px;margin:40px auto;padding:0 16px;font:16px/1.5 sans-serif">
       <h1>Timi Folayan</h1>
       <p>Software Engineering @ Rose-Hulman, May 2027. This site needs JavaScript for its menus.</p>
       <p><a href="Resume.pdf">Resume (PDF)</a> · <a href="https://github.com/rhit-folayaod">GitHub</a> · <a href="https://www.linkedin.com/in/timifolayan">LinkedIn</a> · <a href="mailto:folayaod@rose-hulman.edu">folayaod@rose-hulman.edu</a></p>
@@ -27,21 +26,6 @@
   </noscript>
 </main>
 
-<div class="corner corner-left">
-  <button type="button" class="mc-btn mc-square" id="mute" aria-pressed="false" aria-label="Click sounds off. Turn on"></button>
-  <button type="button" class="mc-btn mc-square" id="settings" aria-haspopup="dialog" aria-label="Settings"></button>
-  <span class="version">Portfolio v1.0</span>
-</div>
-
-<dialog id="settings-dialog" class="mc-dialog" aria-labelledby="settings-title">
-  <h2 id="settings-title">Options</h2>
-  <div class="opt-list">
-    <button type="button" class="mc-btn" data-opt="sound"></button>
-    <button type="button" class="mc-btn" data-opt="motion"></button>
-  </div>
-  <form method="dialog"><button class="mc-btn" value="done">Done</button></form>
-</dialog>
-
-<script type="module" src="assets/js/app.js"></script>
+<script type="module" src="assets/js/boot.js"></script>
 </body>
 </html>

@@ -243,6 +243,142 @@ const draw = {
     set(g, 4, 13, color); set(g, 6, 13, color); set(g, 9, 13, color); set(g, 11, 13, color);
     outline(g); return g;
   },
+  /* ---------- desktop + theme icons (all original drawings) ---------- */
+  qblock() {
+    const g = grid(16);
+    rows(g, 1, 1, [
+      "hhhhhhhhhhhhhh",
+      "hr..........rs",
+      "h....qqqq....s",
+      "h...qqddqq...s",
+      "h...qqd.qqd..s",
+      "h.......qqd..s",
+      "h......qqdd..s",
+      "h.....qqdd...s",
+      "h.....qqd....s",
+      "h......dd....s",
+      "h.....qq.....s",
+      "h.....qqd....s",
+      "hr.....dd...rs",
+      "ssssssssssssss",
+    ], { h: "#ffd27a", ".": "#f0a52a", s: "#b8641a", r: "#6b3a10", q: "#fff3d6", d: "#6b3a10" });
+    outline(g); return g;
+  },
+  grass() {
+    const g = grid(16);
+    rows(g, 1, 1, [
+      "GGgGGgGGGgGGgG",
+      "gggggGgggggGgg",
+      "gdgggdggdgggdg",
+      "dddgddddddgddd",
+      "ddDdddsdddddDd",
+      "dddddDddddsddd",
+      "dsdddddddDdddd",
+      "ddddDddsdddddd",
+      "dDdddddddddsDd",
+      "ddddsddDdddddd",
+      "ddDdddddddsddd",
+      "dddddsdDdddddd",
+      "dsddddddddddDd",
+      "DDDDDDDDDDDDDD",
+    ], { G: "#7cc84f", g: "#5fa83a", d: "#8a5a33", D: "#6b4224", s: "#a8754a" });
+    outline(g); return g;
+  },
+  tree() {
+    const g = grid(16);
+    fill(g, (x, y) => y >= 12 && y <= 14 && x >= 1 && x <= 14, "#8a5a33");
+    fill(g, (x, y) => y === 12 && x >= 1 && x <= 14, "#4fae3c");
+    set(g, 4, 14, "#6b4224"); set(g, 11, 13, "#6b4224");
+    fill(g, (x, y) => x >= 7 && x <= 8 && y >= 7 && y <= 11, "#7a4f2a");
+    set(g, 8, 9, "#5a3a1c");
+    fill(g, (x, y) => (x - 7.5) ** 2 / 30 + (y - 4.5) ** 2 / 12 <= 1, "#3c8f35");
+    fill(g, (x, y) => (x - 6) ** 2 / 9 + (y - 3.5) ** 2 / 4 <= 1, "#62bf4a");
+    outline(g); return g;
+  },
+  ring() {
+    const g = grid(16);
+    const d = (x, y) => Math.hypot(x - 7.5, y - 7.5);
+    fill(g, (x, y) => d(x, y) <= 6.6 && d(x, y) >= 3.6, "#f2c12e");
+    fill(g, (x, y) => d(x, y) <= 6.6 && d(x, y) >= 3.6 && x + y >= 17, "#c48a12");
+    fill(g, (x, y) => d(x, y) <= 6.6 && d(x, y) >= 5.2 && x + y <= 10, "#fff1a8");
+    outline(g); return g;
+  },
+  crate() {
+    const g = grid(16);
+    fill(g, (x, y) => y <= 5 && (x - 7.5) ** 2 / 49 + (y - 5.5) ** 2 / 20 <= 1, "#e8edf2");
+    fill(g, (x, y) => y <= 5 && (x - 7.5) ** 2 / 49 + (y - 5.5) ** 2 / 20 <= 1 && Math.floor((x + 1) / 3) % 2 === 0, "#e0533c");
+    line(g, 2, 6, 5, 9, "#d8d0c0"); line(g, 13, 6, 10, 9, "#d8d0c0"); line(g, 7, 6, 7, 9, "#d8d0c0");
+    fill(g, (x, y) => x >= 4 && x <= 11 && y >= 9 && y <= 14, "#b07a3a");
+    line(g, 4, 11, 11, 11, "#7d5222"); line(g, 4, 13, 11, 13, "#7d5222");
+    fill(g, (x, y) => (x === 4 || x === 11) && y >= 9 && y <= 14, "#2f6fd6");
+    outline(g); return g;
+  },
+  notepad() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 3 && x <= 12 && y >= 2 && y <= 14, "#ffffff");
+    fill(g, (x, y) => x >= 3 && x <= 12 && y >= 2 && y <= 3, "#2a5bd7");
+    for (const y of [6, 8, 10, 12]) line(g, 5, y, 10, y, "#8aa2c8");
+    set(g, 12, 14, "#c0c0c0"); set(g, 11, 14, "#c0c0c0"); set(g, 12, 13, "#c0c0c0");
+    outline(g); return g;
+  },
+  computer() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 1 && x <= 14 && y >= 1 && y <= 10, "#d4d0c4");
+    fill(g, (x, y) => x >= 3 && x <= 12 && y >= 3 && y <= 8, "#008080");
+    set(g, 4, 4, "#7fd4d4"); set(g, 5, 4, "#7fd4d4");
+    set(g, 12, 10, "#3fbf3f");
+    fill(g, (x, y) => x >= 6 && x <= 9 && y === 11, "#a8a497");
+    fill(g, (x, y) => x >= 3 && x <= 12 && y >= 12 && y <= 13, "#d4d0c4");
+    outline(g); return g;
+  },
+  bin() {
+    const g = grid(16);
+    fill(g, (x, y) => y >= 4 && y <= 14 && x >= 3 + (y - 4) / 5 && x <= 12 - (y - 4) / 5, "#b9bdc1");
+    fill(g, (x, y) => y >= 5 && y <= 13 && x >= 4 && x <= 11 && (x + y) % 3 === 0, "#7d8389");
+    fill(g, (x, y) => y === 3 && x >= 2 && x <= 13, "#e2e5e8");
+    outline(g); return g;
+  },
+  chest() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 1 && x <= 14 && y >= 4 && y <= 13, "#9a6230");
+    fill(g, (x, y) => x >= 1 && x <= 14 && (y === 4 || y === 8 || y === 13), "#6b3f1a");
+    fill(g, (x, y) => (x === 1 || x === 14) && y >= 4 && y <= 13, "#6b3f1a");
+    fill(g, (x, y) => x >= 7 && x <= 8 && y >= 7 && y <= 10, "#e8b923");
+    outline(g); return g;
+  },
+  envelope() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 1 && x <= 14 && y >= 3 && y <= 12, "#f0f0f0");
+    line(g, 1, 3, 7, 8, "#8a96a3"); line(g, 14, 3, 8, 8, "#8a96a3");
+    outline(g); return g;
+  },
+  door() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 4 && x <= 11 && y >= 1 && y <= 14, "#8a5a2b");
+    fill(g, (x, y) => x >= 5 && x <= 10 && ((y >= 2 && y <= 6) || (y >= 9 && y <= 13)), "#6e4520");
+    set(g, 10, 8, GOLD);
+    outline(g); return g;
+  },
+  dice() {
+    const g = grid(16);
+    fill(g, (x, y) => x >= 2 && x <= 12 && y >= 3 && y <= 13, "#f4f1ea");
+    fill(g, (x, y) => (x === 12 || y === 13) && x >= 2 && y >= 3, "#c9c2b2");
+    for (const [x, y] of [[4, 5], [9, 5], [6, 8], [4, 11], [9, 11]]) { set(g, x, y, "#c62828"); set(g, x + 1, y, "#c62828"); }
+    // sparkle
+    line(g, 14, 0, 14, 4, "#ffd84a"); line(g, 12, 2, 15, 2, "#ffd84a"); set(g, 14, 2, "#fff6c8");
+    outline(g); return g;
+  },
+  monogram() {
+    const g = grid(12);
+    rows(g, 0, 2, [
+      "#####.####.",
+      "..#...#....",
+      "..#...###..",
+      "..#...#....",
+      "..#...#....",
+    ], { "#": "#101010" });
+    return g;
+  },
 };
 
 const cache = new Map();
