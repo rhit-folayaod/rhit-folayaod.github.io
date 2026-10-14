@@ -199,7 +199,7 @@ function profile() {
         <div class="x-frame"><img src="headshot.jpg" width="480" height="480" alt="Timi Folayan in a dark suit, smiling"><span class="x-tag">1P</span></div>
         <h2 class="x-pname">${esc(a.name)}</h2><p class="x-org">${esc(a.fullName)}</p>
         <dl class="x-stats">${a.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-        <p class="x-actions"><a class="x-btn" href="${links.resume}" ${ext}>Resume</a><a class="x-btn alt" href="mailto:${links.email}">Email</a></p>
+        <p class="x-actions"><a class="x-btn" href="${links.resume}" ${ext}>Resume</a><a class="x-btn alt" href="mailto:${links.email}">Email (school)</a><a class="x-btn alt" href="mailto:${links.email2}">Personal email</a></p>
       </section>
       <div class="x-col">
         <section class="x-panel"><p class="x-label">Story</p>${a.bio.map((p) => `<p>${esc(p)}</p>`).join("")}</section>

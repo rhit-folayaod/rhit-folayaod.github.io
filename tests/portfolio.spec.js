@@ -208,3 +208,35 @@ test("link previews: meta tags are in the raw HTML and every icon is served", as
   expect(manifest).toMatchObject({ name: "Timi Folayan Portfolio", short_name: "Timi" });
   expect(manifest.icons.map((i) => i.sizes)).toEqual(["192x192", "512x512"]);
 });
+
+test("music: off by default, taskbar toggle persists, games keep a mute button", async ({ page }) => {
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  await page.goto("/");
+  const tray = page.locator(".tray [data-sound]");
+  await expect(tray).toHaveAttribute("aria-pressed", "false");
+  await tray.click();
+  await expect(tray).toHaveAttribute("aria-pressed", "true");
+  expect(await page.evaluate(() => localStorage.getItem("tf-music"))).toBe("on");
+  await page.reload();
+  await expect(page.locator(".tray [data-sound]")).toHaveAttribute("aria-pressed", "true");
+  await page.goto("/#/mario");
+  const fab = page.locator(".sound-fab");
+  await expect(fab).toBeVisible();
+  await fab.click();
+  await expect(fab).toHaveAttribute("aria-pressed", "false");
+  expect(await page.evaluate(() => localStorage.getItem("tf-music"))).toBe("off");
+  expect(errors, errors.join("\n")).toEqual([]);
+});
+
+test("contact: school email is primary, personal email is secondary, everywhere", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "My Computer" }).press("Enter");
+  await expect(page.locator('a[href="mailto:timilehindfolayan@gmail.com"]').first()).toBeAttached();
+  for (const t of THEMES) {
+    await page.goto(`/#/${t}/about`);
+    await expect(page.locator("main h1")).toBeVisible();
+    await expect(page.locator('main a[href="mailto:folayaod@rose-hulman.edu"]').first()).toBeAttached();
+    await expect(page.locator('main a[href="mailto:timilehindfolayan@gmail.com"]').first()).toBeAttached();
+  }
+});

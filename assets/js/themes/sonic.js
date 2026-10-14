@@ -130,7 +130,7 @@ function aboutPage() {
         <p class="s-got">Timi got through<br><b>Rose-Hulman</b></p>
         <img src="headshot.jpg" width="480" height="480" alt="Timi Folayan in a dark suit, smiling">
         <dl>${a.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-        <p class="s-actions"><a class="s-go" href="${links.resume}" ${ext}>Resume</a><a class="s-go" href="mailto:${links.email}">Email</a></p>
+        <p class="s-actions"><a class="s-go" href="${links.resume}" ${ext}>Resume</a><a class="s-go" href="mailto:${links.email}">Email (school)</a><a class="s-go" href="mailto:${links.email2}">Personal email</a></p>
       </section>
       <div class="s-col">
         <section class="s-panel"><h2 class="s-panel-h">${esc(a.fullName)}</h2>${a.bio.map((p) => `<p>${esc(p)}</p>`).join("")}</section>

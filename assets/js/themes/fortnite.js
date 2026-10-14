@@ -153,7 +153,7 @@ function careerPage() {
         <img src="headshot.jpg" width="480" height="480" alt="Timi Folayan in a dark suit, smiling">
         <h2>${esc(a.name)}</h2><p class="f-org">${esc(a.fullName)}</p>
         <dl class="f-stats">${a.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-        <p class="f-actions"><a class="f-btn" href="${links.resume}" ${ext}>Resume</a><a class="f-btn alt" href="mailto:${links.email}">Email</a></p>
+        <p class="f-actions"><a class="f-btn" href="${links.resume}" ${ext}>Resume</a><a class="f-btn alt" href="mailto:${links.email}">Email (school)</a><a class="f-btn alt" href="mailto:${links.email2}">Personal email</a></p>
       </section>
       <div class="f-col">
         <section class="f-panel">${a.bio.map((p) => `<p>${esc(p)}</p>`).join("")}</section>

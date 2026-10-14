@@ -33,7 +33,8 @@ export const contactLinks = [
   { id: "resume", label: "Resume", href: links.resume, external: true },
   { id: "github", label: "GitHub", href: links.github, external: true },
   { id: "linkedin", label: "LinkedIn", href: links.linkedin, external: true },
-  { id: "email", label: "Email", href: `mailto:${links.email}`, external: false },
+  { id: "email", label: "School email", href: `mailto:${links.email}`, external: false },
+  { id: "email2", label: "Personal email", href: `mailto:${links.email2}`, external: false },
 ];
 export const linkAttrs = (l) => (l.external ? ext : "");
 

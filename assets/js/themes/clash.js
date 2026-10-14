@@ -183,7 +183,7 @@ function townHall() {
         <img src="headshot.jpg" width="480" height="480" alt="Timi Folayan in a dark suit, smiling">
         <h2>${esc(a.name)}</h2><p class="v-org">${esc(a.fullName)}</p>
         <dl class="v-stats">${a.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-        <p class="v-actions"><a class="v-btn go" href="${links.resume}" ${ext}>Resume</a><a class="v-btn" href="mailto:${links.email}">Email</a></p>
+        <p class="v-actions"><a class="v-btn go" href="${links.resume}" ${ext}>Resume</a><a class="v-btn" href="mailto:${links.email}">Email (school)</a><a class="v-btn" href="mailto:${links.email2}">Personal email</a></p>
       </section>
       <div class="v-col">
         <section class="v-card">${a.bio.map((p) => `<p>${esc(p)}</p>`).join("")}</section>
