@@ -294,9 +294,9 @@ function aboutScreen() {
       ${chips(a.chips)}
       <div class="bar2 small">
         <a class="mc-btn" href="${links.resume}" ${ext}>Resume</a>
-        <a class="mc-btn" href="mailto:${links.email}">Email</a>
+        <a class="mc-btn" href="mailto:${links.email}">Email (school)</a><a class="mc-btn" href="mailto:${links.email2}">Personal email</a>
       </div>
-      <p class="email">${esc(links.email)}</p>
+      <p class="email">${esc(links.email)} (primary)<br>${esc(links.email2)} (secondary)</p>
     </div>
     <div class="about-right">
       <div class="bio">${a.bio.map((p) => `<p>${esc(p)}</p>`).join("")}</div>

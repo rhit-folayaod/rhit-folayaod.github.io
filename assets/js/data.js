@@ -3,7 +3,8 @@
 export const links = {
   github: "https://github.com/rhit-folayaod",
   linkedin: "https://www.linkedin.com/in/timifolayan",
-  email: "folayaod@rose-hulman.edu",
+  email: "folayaod@rose-hulman.edu", // primary (school)
+  email2: "timilehindfolayan@gmail.com", // secondary (personal)
   resume: "Resume.pdf",
 };
 

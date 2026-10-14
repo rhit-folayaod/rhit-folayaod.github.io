@@ -53,7 +53,7 @@ function fallbackHtml(err) {
   return `<section class="boot-fallback" style="max-width:640px;margin:40px auto;padding:0 16px;font:16px/1.5 system-ui,sans-serif;color:#111;background:#fff">
   <h1>Timi Folayan</h1>
   <p>Software Engineering @ Rose-Hulman, May 2027. The interactive portfolio failed to load on this browser.</p>
-  <p><a href="Resume.pdf">Resume (PDF)</a> · <a href="https://github.com/rhit-folayaod">GitHub</a> · <a href="https://www.linkedin.com/in/timifolayan">LinkedIn</a> · <a href="mailto:folayaod@rose-hulman.edu">folayaod@rose-hulman.edu</a></p>
+  <p><a href="Resume.pdf">Resume (PDF)</a> · <a href="https://github.com/rhit-folayaod">GitHub</a> · <a href="https://www.linkedin.com/in/timifolayan">LinkedIn</a> · <a href="mailto:folayaod@rose-hulman.edu">folayaod@rose-hulman.edu</a> (primary) · <a href="mailto:timilehindfolayan@gmail.com">timilehindfolayan@gmail.com</a> (secondary)</p>
   <p style="color:#666;font-size:13px">(${msg.replace(/[<>&]/g, "")})</p>
 </section>`;
 }
@@ -78,6 +78,9 @@ function parse() {
 
 let cleanups = [];
 let first = true;
+let music = null;
+// Music is optional: if it fails to load, the site still renders.
+import("./music.js").then((m) => { music = m; m.init(); }).catch((e) => console.warn("[boot] music off", e));
 let seq = 0;
 async function render() {
   try {
@@ -96,6 +99,7 @@ async function render() {
     document.title = view.title;
     main.innerHTML = view.html;
     view.wire?.(main, ctx);
+    music?.sync();
     if (!first) (main.querySelector("[data-focus]") || main.querySelector("h1"))?.focus({ preventScroll: true });
     first = false;
   } catch (err) {

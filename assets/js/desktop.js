@@ -49,7 +49,7 @@ function resumeBody() {
   const old = earlierProjects.map(row).join("");
   return `<div class="win-menu" aria-hidden="true"><span>File</span><span>Edit</span><span>Search</span><span>Help</span></div>
     <div class="win-body paper mono" tabindex="0" aria-label="Resume text">
-      <p><b>${esc(about.name.toUpperCase())}</b><br>${esc(links.email)}</p>
+      <p><b>${esc(about.name.toUpperCase())}</b><br>${esc(links.email)} (primary)<br>${esc(links.email2)} (secondary)</p>
       <p>B.S. Software Engineering, Minor in Geography<br>Rose-Hulman Institute of Technology, May 2027</p>
       <h3>EXPERIENCE</h3>${xp}
       <h3>PROJECTS</h3>${pj}
@@ -58,12 +58,12 @@ function resumeBody() {
     <div class="win-actions"><a class="w-btn" href="${links.resume}" ${ext}>Open Resume.pdf</a><button type="button" class="w-btn" data-close>Close</button></div>`;
 }
 function computerBody() {
-  const drive = { resume: "notepad", github: "github", linkedin: "linkedin", email: "envelope" };
-  const label = { resume: "Resume.pdf", github: "GitHub (G:)", linkedin: "LinkedIn (L:)", email: "Email (E:)" };
+  const drive = { resume: "notepad", github: "github", linkedin: "linkedin", email: "envelope", email2: "envelope" };
+  const label = { resume: "Resume.pdf", github: "GitHub (G:)", linkedin: "LinkedIn (L:)", email: "School email (E:)", email2: "Personal email (P:)" };
   return `<div class="win-body drives">
       ${contactLinks.map((l) => `<a class="drive" href="${l.href}" ${linkAttrs(l)}><span class="drive-ico ${l.id}">${icon(drive[l.id])}</span><span>${label[l.id]}</span></a>`).join("")}
     </div>
-    <p class="win-status"><span>${contactLinks.length} object(s)</span><span>${esc(links.email)}</span></p>`;
+    <p class="win-status"><span>${contactLinks.length} object(s)</span><span>${esc(links.email)} (primary) · ${esc(links.email2)} (secondary)</span></p>`;
 }
 function binBody() {
   return `<div class="win-body empty-bin">
@@ -128,7 +128,7 @@ function html() {
     <button type="button" class="start" id="start" aria-haspopup="menu" aria-expanded="false" aria-controls="startmenu"><span class="start-ico">${icon("crown")}</span>Start</button>
     <div class="tasks" id="tasks" aria-label="Open windows"></div>
     <p class="tb-hint"><span class="wide-only">Click any icon to open it. Esc backs out of a game.</span><span class="narrow-only">Tap an icon to open it.</span></p>
-    <div class="tray"><time id="clock"></time></div>
+    <div class="tray"><button type="button" class="sound" data-sound aria-pressed="false" aria-label="Play music"><span class="snd-ico" aria-hidden="true"></span></button><time id="clock"></time></div>
   </footer>`;
 }
 

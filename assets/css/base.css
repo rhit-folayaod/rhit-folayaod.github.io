@@ -40,3 +40,16 @@ main { min-height: 100dvh; outline: none; }
 }
 /* Headings get focus after navigation so screen readers land there; no ring needed. */
 h1[tabindex="-1"]:focus, main[tabindex="-1"]:focus { outline: none !important; box-shadow: none !important; }
+
+/* music toggle: taskbar tray on the desktop, small corner button in games */
+[data-sound] { cursor: pointer; }
+.snd-ico { display: inline-block; width: 16px; height: 16px; image-rendering: pixelated;
+  background: no-repeat center/16px 16px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath d='M2 6h3v4H2zM5 5h1v6H5zM6 4h1v8H6zM7 3h1v10H7z' fill='%23000'/%3E%3Cpath d='M10 4l5 8M15 4l-5 8' stroke='%23c00' stroke-width='1.6'/%3E%3C/svg%3E"); }
+.is-on .snd-ico { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath d='M2 6h3v4H2zM5 5h1v6H5zM6 4h1v8H6zM7 3h1v10H7zM10 6h1v4h-1zM12 4h1v8h-1zM14 2h1v12h-1z' fill='%23000'/%3E%3C/svg%3E"); }
+.tray .sound { width: 26px; height: 24px; margin-right: 8px; padding: 0; border: 0; background: transparent; display: inline-flex; align-items: center; justify-content: center; }
+.tray .sound:focus-visible { outline: 1px dotted #000; }
+.sound-fab { position: fixed; right: 10px; bottom: 10px; z-index: 9999; width: 36px; height: 36px; padding: 0;
+  background: #c0c0c0; border: 0; box-shadow: inset -1px -1px #000, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  display: inline-flex; align-items: center; justify-content: center; }
+.sound-fab:focus-visible { outline: 2px solid #ffd700; outline-offset: 2px; }
+body[data-theme="desktop"] .sound-fab, body[data-theme="fallback"] .sound-fab { display: none; }

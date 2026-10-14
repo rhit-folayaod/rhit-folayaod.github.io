@@ -131,7 +131,7 @@ function aboutPage() {
         <div class="t-frame"><img src="headshot.jpg" width="480" height="480" alt="Timi Folayan in a dark suit, smiling"></div>
         <p class="t-name">${esc(a.name)}</p><p class="t-full">${esc(a.fullName)}</p>
         <dl class="t-facts">${a.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-        <p class="t-actions"><a class="t-btn" href="${links.resume}" ${ext}>Resume</a><a class="t-btn" href="mailto:${links.email}">Email</a></p>
+        <p class="t-actions"><a class="t-btn" href="${links.resume}" ${ext}>Resume</a><a class="t-btn" href="mailto:${links.email}">Email (school)</a><a class="t-btn" href="mailto:${links.email2}">Personal email</a></p>
       </section>
       <div class="t-col">
         ${npc(a.name, a.bio.map((p) => `<p>${esc(p)}</p>`).join(""))}
